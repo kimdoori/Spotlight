@@ -113,15 +113,15 @@ background-color:black;
  <ul class="area">
 <li class="item">
 	<div class="top-menu-container" style="float:left;">
-		<button class="top-menu-btn"><a href="main.jsp">HOME</a></button>
+		<button class="top-menu-btn"><a href="index.jsp">HOME</a></button>
 	</div>
 </li>
 <li class="item">
 <div class="top-menu-container">
   <button class="top-menu-btn">MOVIE</button>
   <div class="top-menu-detail" style="left:0;">
-    <a href="#">상영중인 영화</a>
-    <a href="#">리뷰</a>
+    <a href="moviePlaying.jsp">상영중인 영화</a>
+    <a href="review.jsp">리뷰</a>
   </div>
 </div>
 </li>
@@ -129,8 +129,8 @@ background-color:black;
 <div class="top-menu-container">
   <button class="top-menu-btn">RESERVE</button>
   <div class="top-menu-detail" style="left:0;">
-    <a href="#">상영시간표</a>
-    <a href="#">예매하기</a>
+    <a href="movieTime.jsp">상영시간표</a>
+    <a href="reserve.jsp">예매하기</a>
   </div>
 </div>
 </li>
@@ -138,8 +138,8 @@ background-color:black;
 <div class="top-menu-container">
   <button class="top-menu-btn">MY PAGE</button>
   <div class="top-menu-detail" style="left:0;">
-    <a href="#">영화 예매 내역</a>
-    <a href="#">남긴 리뷰</a>
+    <a href="reserveLog.jsp">영화 예매 내역</a>
+    <a href="myReview.jsp">남긴 리뷰</a>
   </div>
 </div>
 </li>

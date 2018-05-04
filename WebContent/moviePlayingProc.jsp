@@ -32,7 +32,7 @@
 }
 
 .container {
-    padding: 2px 16px;
+    padding: 2px 10px;
 }
 .area {
 width:100%;
@@ -68,6 +68,7 @@ width:100%;
 </style>
 <body>
 
+
 <ul>
 <!-- 
 <div id="location_href"></div>
@@ -93,7 +94,6 @@ try{
 } */
 
 
- 
  try {
 	 String apiURL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=4cb7fbd158874cb7e07ef7d5124695fc&targetDt=20180503"; // json 결과
 	    
@@ -150,11 +150,11 @@ try{
        if(i%4==0){
         	out.print( "<br>");
         }
+         //<img src='images/어벤져스인피니티워.jpg'>
          String name= movieObject.get("movieNm").toString(); 
-         name = name.replaceAll("[:]", "").trim();
-         
+         name = name.replaceAll("[:_!-+=~/?*()<>&]", "").replaceAll(" ","");
          out.println("<li class='item'><div class='card'>"+
-         "<img src='img_avatar.png' alt='Avatar' style='width:100%'>"+
+         "<img src='images/"+name+".jpg' alt='"+name+"' style='width:100%'>"+
          "<div class='container'><h4><b>"+movieObject.get("movieNm")+"</b></h4> <p>"+movieObject.get("rank")+"</p><p>"+ movieObject.get("openDt") +"</p> </div></div></li>");
        
       
@@ -170,6 +170,5 @@ try{
 
 %>
 </ul>
-
 </body>
 </html>

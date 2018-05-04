@@ -21,18 +21,21 @@
 </head>
 <style>
 .card {
-	margin:20px;
+	margin:50px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 260px;
+    color:black;
 }
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        color:black;
+    
 }
 
 .container {
-    padding: 2px 10px;
+    padding: 2px 2px;
 }
 .area {
 width:100%;
@@ -73,7 +76,6 @@ width:100%;
 <!-- 
 <div id="location_href"></div>
 <center><img src="img/img5.jpg"></center> -->
-
 <%
 /* BufferedReader reader = null;
 
@@ -154,8 +156,8 @@ try{
          String name= movieObject.get("movieNm").toString(); 
          name = name.replaceAll("[:_!-+=~/?*()<>&]", "").replaceAll(" ","");
          out.println("<li class='item'><div class='card'>"+
-         "<img src='images/"+name+".jpg' alt='"+name+"' style='width:100%'>"+
-         "<div class='container'><h4><b>"+movieObject.get("movieNm")+"</b></h4> <p>"+movieObject.get("rank")+"</p><p>"+ movieObject.get("openDt") +"</p> </div></div></li>");
+         "<img src='images/"+name+".jpg' onerror=\"this.src='images/poster.jpg'\" style='width:100%' >"+
+         "<div class='container'><h4><b>"+movieObject.get("movieNm")+"</b></h4> <p>"+movieObject.get("rank")+"<br>"+ movieObject.get("openDt") +"</p> </div></div></li>");
        
       
      } 

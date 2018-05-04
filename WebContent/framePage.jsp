@@ -30,10 +30,10 @@ body,html{
 	</td>
 </tr>
 <tr>
-	<td width=150 valign="top">
+	<td width=15% valign="top">
 		<jsp:include page="left.jsp" flush="false"/>
 	</td>
-	<td width=350 valign="top">
+	<td width=85% valign="top">
 		<jsp:include page="<%= contentpage %>"></jsp:include>
 	</td>
 	

@@ -20,7 +20,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-
+.selected{
+	background-color:red;
+}
 .area {
 width:100%;
   margin: 0;
@@ -50,14 +52,14 @@ width:100%;
 .movieList {
   
   text-align: center;
-  line-height: 30px;
+  padding : 5px;
 }
 </style>
 
 </head>
 <body>
 
-<%!
+<%-- <%!
 
 String getDailyMovie(){
 
@@ -122,16 +124,17 @@ e.printStackTrace();
 }
 return null;
 }
-%>
+%> --%>
 <table width="100%" border="1px">
 <tr>
-<th >영화</th>
-<th>날짜</th>
+<th style="width:30%">영화</th>
+<th style="width:30%">날짜</th>
 <th>시간</th>
 </tr>
 <tr>
 <td id="movie">
-<ul><%
+<%
+
 try {
 	String filepath = application.getRealPath("/WEB-INF/movie/");
 
@@ -156,13 +159,77 @@ try {
 	}
 	if(!isExist){
 	//TODO:api에서 가ㅕㅈ오
-		String movies = getDailyMovie();
+	//	String movies = getDailyMovie();
+		String moviesStr="";//지우기
+
+	//지우기
+		try{
+			String apiURL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=4cb7fbd158874cb7e07ef7d5124695fc&targetDt=20180503"; // json 결과
+
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection)url.openConnection();
+			con.setRequestMethod("GET");
+
+			int responseCode = con.getResponseCode();
+			BufferedReader br;
+			if(responseCode==200) { // 정상 호출
+			    br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			} else {  // 에러 발생
+				System.out.println(responseCode);
+			    br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			}
+
+			String inputLine;
+			StringBuffer responseStr = new StringBuffer();
+			while ((inputLine = br.readLine()) != null) {
+				
+				responseStr.append(inputLine);
+			}
+			br.close();
+			// out.println(responseStr.toString() );
+
+			JSONParser jsonParser = new JSONParser();
+			//JSON데이터를 넣어 JSON Object 로 만들어 준다.
+			JSONObject jsonObject = (JSONObject) jsonParser.parse(responseStr.toString());
+
+			JSONObject boxOfficeResult = (JSONObject) jsonObject.get("boxOfficeResult");
+			JSONArray dailyBoxOfficeList = (JSONArray) boxOfficeResult.get("dailyBoxOfficeList");
+
+			StringBuffer movies = new StringBuffer();
+			for(int i=0; i<dailyBoxOfficeList.size(); i++){
+
+			 //배열 안에 있는것도 JSON형식 이기 때문에 JSON Object 로 추출
+			 JSONObject movieObject = (JSONObject) dailyBoxOfficeList.get(i);
+			 //JSON name으로 추출
+			 movies.append(movieObject.get("movieNm").toString()+"\n"); 
+			 //name = name.replaceAll("[:_!-+=~/?*()<>&]", "").replaceAll(" ","");
+
+			 //<img src='images/어벤져스인피니티워.jpg'>
+			 
+			 
+
+			} 
+			moviesStr =  movies.toString();
+
+
+
+
+			} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+			}
+		
+		//지우기
+	
+	
+	
 		PrintWriter writer = null;
 		String moviefilepath =filepath+dailyfile;
 
 		//out.println(filePath);
 		writer = new PrintWriter(moviefilepath);
-		writer.println(movies);
+		writer.println(moviesStr);
 
 		//out.println("<font color='red'><b>게시물</font>이 저장되었습니다.</b>");
 		writer.flush();
@@ -177,8 +244,8 @@ try {
 			String str = reader.readLine();
 			if (str == null || str.equals(""))
 				break;
-			out.print("<li class='movieList'><h4><b>"+str+"</b></h4></li>");
-
+			out.print("<div class='movieList'><h4><b>"+str+"</b></h4></div><br>");
+			
 		}
 	   
 	
@@ -195,13 +262,31 @@ e.printStackTrace();
 	
 	
 	
-%></ul>
+%>
+<script>
+var x = document.getElementsByClassName('movieList')
+for (var i = 0; i < x.length; i++) {
+    x[i].addEventListener("click", function(){
+
+    var selectedEl = document.querySelector(".selected");
+    if(selectedEl){
+        selectedEl.classList.remove("selected");
+    }
+    this.classList.add("selected");
+
+    }, false);
+}
+</script>
+
 </td>
 
-<td></td>
+<td>
+<jsp:include page="calendar.jsp" flush="false"/>
+</td>
 
 <td></td>
 </tr>
 </table>
+<button onclick="location='choiceSheet.jsp'">예매하기</button>
 </body>
 </html>

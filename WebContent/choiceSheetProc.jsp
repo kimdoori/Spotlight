@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+
 <title>Insert title here</title>
 <style>
 .sheet{
@@ -20,10 +22,7 @@
     color:black;
     
 }
-.sheet[onclick]{
-background-color:gray;
-    color:black;
-}
+
 .sheet-num{
 	width:20px;
 	height:20px;
@@ -34,21 +33,7 @@ background-color:gray;
 	 text-align: center;
 	
 
-}
-li.on{
-color:red;
-}
-</style>
-<script>
- $(function(){
-  var sBtn = $("ul > li");    //  ul > li 이를 sBtn으로 칭한다. (클릭이벤트는 li에 적용 된다.)
-  sBtn.find("a").click(function(){   // sBtn에 속해 있는  a 찾아 클릭 하면.
-   sBtn.removeClass("active");     // sBtn 속에 (active) 클래스를 삭제 한다.
-   $(this).parent().addClass("active"); // 클릭한 a에 (active)클래스를 넣는다.
-  })
- })
-</script>
-<style>
+
 .container input {
   position: absolute;
   opacity: 0;
@@ -100,8 +85,8 @@ color:red;
   transform: rotate(45deg);
 }
 </style>
+<%! int ticketCnt=3; %>
 <script>
-window.onload=init;
 function calculate(){
 	var adult = document.getElementById("adult");
 	var teen = document.getElementById("teen");
@@ -117,44 +102,33 @@ function calculate(){
 	var movieRatesStr = adult.value+" X 10000 + " + teen.value +" X 8000 = ";
 	var movieRates = parseInt(adult.value) * 10000 + parseInt(teen.value)*8000;
 	document.getElementById("numOfReserve").value =movieRatesStr+ movieRates;
+	var cnt = document.getElementById("ticketCnt").value= parseInt(adult.value)+parseInt(teen.value);
+	if(cnt==0)
+		$(":checkbox:not(:checked)").attr("disabled", "disabled");
+	else
+        $("input[name=chk]:checkbox").removeAttr("disabled");
+
+		
 }
-function init(){
-	var chkbox = document.getElementsByName("chk");
-	var chkCnt = 0;
 
-	for(var i=0;i<chkbox.length; i++){
 
-		chkbox[i].onclick=count_ck(chkbox[i]);
-	}
+$(document).ready(function() {
 	
-}
-function count_ck(obj){
-
-	var chkbox = document.getElementsByName("chk");
-
-	var chkCnt = 0;
-
-	for(var i=0;i<chkbox.length; i++){
-
-		if(chkbox[i].checked){
-
-			chkCnt++;
-
-		}
-
-	}
-
-	if(chkCnt>2){
-
-		obj.checked = false;
-
-		return false;
-
-	}
-
-}
-
-
+	
+    $("input[name=chk]:checkbox").change(function() {// 체크박스들이 변경됬을때
+    var cnt = $("#ticketCnt").val();
+    if(cnt<=$("input[name=chk]:checkbox:checked").length ) {
+            $(":checkbox:not(:checked)").attr("disabled", "disabled");
+        } else {
+            $("input[name=chk]:checkbox").removeAttr("disabled");
+        }
+    });
+ 
+    $("#selCnt").change(function() {
+        $("input[name=chk]:checkbox").removeAttr("checked");
+        $("input[name=chk]:checkbox").removeAttr("disabled");
+    });
+});
 </script>
 </head>
 <body>
@@ -164,7 +138,7 @@ function count_ck(obj){
 청소년
 <input id="teen" type="number" min="0" max="5" step="1" value="0">
 
-<output id="numOfReserve"></output>
+<output id="numOfReserve"></output><output id="ticketCnt" hidden="true">0</output>
 
 </form>
 <div style="text-align:center">
@@ -181,7 +155,7 @@ function count_ck(obj){
 				continue;
 			}
 
-			out.println("<input name='chk' type='checkbox' class='sheet'></input>");
+			out.println("<input name='chk' type='checkbox' class='sheet' disabled></input>");
 			
 		}
 		out.print("<br>");
@@ -189,9 +163,8 @@ function count_ck(obj){
 
 %>
 </div>
-<script>
+<button onclick="window.open('reserve.jsp','window_name','width=460,height=380,location=no,status=no,scrollbars=yes');">예매하기</button>
 
-
-</script>
 </body>
 </html>
+

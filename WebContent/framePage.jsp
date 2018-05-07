@@ -31,7 +31,9 @@ body,html{
 </tr>
 <tr>
 	<td width=15% valign="top">
-		<jsp:include page="left.jsp" flush="false"/>
+		<jsp:include page="left.jsp" flush="false">
+			<jsp:param name="CONTENTPAGE" value="<%=contentpage %>"/>
+		</jsp:include>
 	</td>
 	<td width=85% valign="top">
 		<jsp:include page="<%= contentpage %>"></jsp:include>

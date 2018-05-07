@@ -17,7 +17,7 @@ http://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do
 json 파싱 : https://calyfactory.github.io/%EC%A0%9C%EC%9D%B4%EC%8A%A8%ED%8C%8C%EC%8B%B1/
 
 캘린더 : https://yuilibrary.com/yui/docs/calendar/
-
+checkbox 체크 제한 : http://stove99.tistory.com/109
 div 토글 : https://stackoverflow.com/questions/31531461/how-to-select-only-one-div-from-multiple-divs-using-javascript
 </body>
 </html>

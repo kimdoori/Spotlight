@@ -1,12 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
+<meta charset="UTF-8">
+<title>결제 정보 작성</title>
+<style>
+
+</style>
 </head>
 <body>
+<form action="reserveProc.jsp" method="post">
 
+<table style="border-collapse:collapse;" cellpadding="10px" rules="rows" frame="hsides">
+<tr>
+<th colspan="2">결제 정보 작성 - 신용카드 결제만 가능합니다.</th>
+</tr>
+<tr>
+<td>카드종류</td>
+<td>
+<select>
+<option value="카드를 선택하세요">카드를 선택하세요</option>
+<option value="카드를 선택하세요">BC카드</option>
+<option value="카드를 선택하세요">국민카드</option>
+<option value="카드를 선택하세요">신한카드</option>
+<option value="카드를 선택하세요">삼성카드</option>
+<option value="카드를 선택하세요">현대카드</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>카드번호</td>
+<td><input type="text" maxlength="4" size="5">-<input type="password" maxlength="4" size="5">-<input type="text" maxlength="4" size="5">-<input type="text" maxlength="4" size="5"></td>
+</tr>
+<tr>
+<td>비밀번호</td>
+<td><input type="password" maxlength="2" size="2">**</td>
+</tr>
+<tr>
+<td>유효기간</td>
+<td><input type="text" maxlength="2" size="2">월<input type="text" maxlength="2" size="2">년</td>
+</tr>
+<tr>
+<td>법적생년월일<br>(6자리)</td>
+<td><input type="password" maxlength="6" size="7">-* * * * * * *</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center">
+<button onclick="location='reviewWrite.jsp'">결제하기</button>
+
+</td>
+</tr>
+</table>
+
+
+
+</form>
 </body>
 </html>

@@ -130,7 +130,7 @@ background-color:black;
   <button class="top-menu-btn">RESERVE</button>
   <div class="top-menu-detail" style="left:0;">
     <a href="movieTime.jsp">상영시간표</a>
-    <a href="reserve.jsp">예매하기</a>
+    <a href="choiceMovie.jsp">예매하기</a>
   </div>
 </div>
 </li>

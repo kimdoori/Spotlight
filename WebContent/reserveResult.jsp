@@ -11,14 +11,15 @@
 <%
 String result = request.getParameter("send");
 if(result.equals("ok")){
-	out.println("<font color='red'><b>게시물</font>이 저장되었습니다.</b>");
+	out.println("<div style='text-align:center;'><b>결제가 완료되었습니다.</b></div>");
 
 }else{
-	out.println("<font color='red'><b>게시물</font>을 저장할 수 없습니다.</b>");
+	out.println("<div style='text-align:center;'><b>결제에 실패했습니다.</b></div>");
 
 }
 %>
-<meta http-equiv='refresh' content='3;url=main.jsp'>
-
+<script> 
+setTimeout("self.close()", 1500); 
+ </script>
 </body>
 </html>

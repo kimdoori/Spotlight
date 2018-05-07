@@ -8,7 +8,7 @@
 </head>
 <body>
 <center>
-	<form action="loginProc.jsp">
+	<form action="loginProc.jsp" method="post">
 		<table border=1>
 			<tr>
 				<td>ID</td>

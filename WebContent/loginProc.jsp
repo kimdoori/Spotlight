@@ -1,5 +1,9 @@
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.File"%>
+<%@page import="java.io.FileReader"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,53 +13,83 @@
 <body>
 
 
-<%
-	String id = request.getParameter("id");
-	String pw = request.getParameter("pw");
-	
-	
-	System.out.println("ID : "+id);
-	System.out.println("PW : "+pw);
+	<%
+		response.setContentType("text/html;charset='UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
-	out.println("ID : "+id);
-	out.println("PW : "+pw);
-	
-%>
-ID = <%= id %><br>  <!--out.print(id);-->
-PW = <%= pw %><br>
-<%--주석1 --%>
-<%--
-<%
-	if(id.equals("choi")){
-		if(pw.equals("1234")){
-			out.println("[로그인 성공]");
+		String input_id = request.getParameter("id");
+		String input_pw = request.getParameter("pw");
+		String user_pw = "";
+		String user_name = "";
+		StringBuffer user_info = new StringBuffer();
 
-		}else{
-			out.println("[비밀번호를 확인하세요.]");
+		BufferedReader reader = null;
+		boolean isExist = false;
+		try {
+			String filepath = application.getRealPath("/WEB-INF/member/");
+
+			File dirFile = new File(filepath);
+			File[] fileList = dirFile.listFiles();
+			int reviewCnt = 0;
+			for (File tempFile : fileList) {
+				if (tempFile.isFile()) {
+					String tempFileName = tempFile.getName();
+					if (tempFileName.equals(input_id + ".txt")) {
+						isExist = true;
+						reader = new BufferedReader(new FileReader(filepath + tempFileName));
+
+						user_pw = reader.readLine();
+						user_name = reader.readLine();
+
+						while (true) {
+							String str = reader.readLine();
+							if (str == null)
+								break;
+							user_info.append(str);
+
+						}
+						break;
+					}
+				}
+
+			}
+
+		} catch (Exception e) {
+			out.println("파일을 읽을 수 없습니다.");
 		}
-	}else{
-		out.println("[회원이 아닙니다.]");
-	}
 
---%>
-<%
-if(id.equals("choi")){
-		if(pw.equals("1234")){%>
-			<jsp:forward page="loginOk.jsp"/>
-	<%		out.println("[로그인 성공]");
-		}else{%>
-			<jsp:forward page="login.jsp"/>
-		<%
-			out.println("[비밀번호를 확인하세요.]");
+		if (!isExist) {//존재하지 않음
+			out.println("<script>alert('[회원이 아닙니다.]');</script>");
+	%>
+	<jsp:forward page="framePage.jsp">
+		<jsp:param name="CONTENTPAGE" value="reviewProc.jsp" />
+	</jsp:forward>
+	<%
+		return;
 		}
-	}else{
-		out.println("[회원이 아닙니다.]");
-		%>
-		<jsp:forward page="insert.jsp"/>;
-		<%
-	}
+		if (input_pw.equals(user_pw)) {
 
-%>
+			session.setAttribute("id", input_id);
+			session.setAttribute("name", user_name);
+	%>
+	<jsp:forward page="framePage.jsp">
+		<jsp:param name="CONTENTPAGE" value="reviewProc.jsp" />
+	</jsp:forward>
+	<%
+		out.println("<script>alert('[로그인 성공]');=");
+
+		} else {
+
+			out.println("<script>alert('[비밀번호를 확인하세요.]');</script>");
+	%>
+	<jsp:forward page="framePage.jsp">
+		<jsp:param name="CONTENTPAGE" value="reviewProc.jsp" />
+	</jsp:forward>
+	<%
+		}
+	%>
+
+
 
 </body>
 </html>

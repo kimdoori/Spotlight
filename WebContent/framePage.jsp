@@ -12,6 +12,8 @@ body,html{
 	height:100%;
 	margin:0px;
 	padding:0px;
+/* 	background-image:url("webImage/logo.jpg");
+ */
 }
 #main{
 /* margin-top:5%;
@@ -45,7 +47,7 @@ body,html{
 			<jsp:param name="CONTENTPAGE" value="<%=contentpage %>"/>
 		</jsp:include>
 	</td>
-	<td width=85% valign="top">
+	<td width=85% valign="top" style="background-image:url('webImage/wall.jpg');background-repeat:repeat;">
 		<jsp:include page="<%= contentpage %>"></jsp:include>
 	</td>
 	

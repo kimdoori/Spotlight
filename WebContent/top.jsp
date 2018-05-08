@@ -9,6 +9,7 @@
 body,html{
 padding:0px;
 margin:0px;
+background-color:black;
 }
 
 .top-menu-container {
@@ -109,6 +110,16 @@ margin:0px;
 </style>
 </head>
 <body>
+<table width="100%">
+<tr>
+<td>
+<div style="text-align:center;">
+<img src="webImage/logo_spotlight.png">
+</div>
+</td>
+</tr>
+</table>
+
 <div id="top">
 
  <ul class="area">

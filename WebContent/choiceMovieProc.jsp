@@ -17,45 +17,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<style>
-.selected{
-	background-color:red;
-}
-.area {
-width:100%;
-  margin: 0;
-  padding: 0;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-}
-
-.area:before {
-  display: inline-block;
-  width: 1px;
-  content: '';
-}
-
-.area:after {
-  display: inline-block;
-  width: 1px;
-  content: '';
-}
-
-.movieList {
-  
-  text-align: center;
-  padding : 5px;
-}
-</style>
-
+<link rel="stylesheet" href="css/reserve.css">
 </head>
 <body>
 

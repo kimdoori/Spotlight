@@ -10,56 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 글쓰기 - 결과화면</title>
-<style>
-.card {
-	margin:50px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 260px;
-    color:black;
-}
-
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        color:black;
-    
-}
-
-.container {
-    padding: 2px 2px;
-}
-.area {
-width:100%;
-  margin: 0;
-  padding: 0;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-}
-
-.area:before {
-  display: inline-block;
-  width: 1px;
-  content: '';
-}
-
-.area:after {
-  display: inline-block;
-  width: 1px;
-  content: '';
-}
-
-.item {
-  display: inline-block;
-  text-align: center;
-  line-height: 30px;
-}
-</style>
+<link rel="stylesheet" href="css/card.css">
 
 </head>
 

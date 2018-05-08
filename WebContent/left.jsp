@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/animation.css" />
+<link rel="stylesheet" href="css/animation.css" />
 </head>
 <body>
 <table width="100%">

@@ -5,86 +5,9 @@
 <head>
 <meta charset="UTF-8">
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
-
+<link rel="stylesheet" href="css/reserve.css">
 <title>Insert title here</title>
-<style>
-.sheet{
-	width:20px;
-	height:20px;
-	background-color:rgb(110, 109, 109);;
-	margin : 1px;
-	display:inline-block;
-	border-radius: 3px;
 
-}
-.sheet:hover {
-	background-color:gray;
-    color:black;
-    
-}
-
-.sheet-num{
-	width:20px;
-	height:20px;
-	background-color:white;
-	margin : 1px;
-	display:inline-block;
-	font-size:15px;
-	 text-align: center;
-	
-
-
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-  background-color: #2196F3;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-</style>
 <%! int ticketCnt=3; %>
 <script>
 function calculate(){

@@ -34,5 +34,7 @@ rolling : https://tympanus.net/codrops/2012/04/17/rotating-words-with-css-animat
 네온사인 : http://nineism.tistory.com/91
 
 영화티켓 : https://codepen.io/verpixelt/pen/cEJLa?utm_source=bypeople
+
+review card : https://codepen.io/xhynk/pen/qrrLmv
 </body>
 </html>

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/animation.css" />
+</head>
+<body>
 <table width="100%">
 <tr>
 <td height="100px">
@@ -33,7 +37,20 @@
 <td>
 
 인기 영화<br>
-
+<div class="rw-words rw-words-1">
+			<span>1. 어벤져스:인피니티워</span>
+			<span>2. 챔피언</span>
+			<span>3. 원더스트럭</span>
+						<span>4. 그날,바다</span>
+						<span>5. 얼리맨</span>
+						<span>6. 매직빈</span>
+			
+</div>
 </td>
 </tr>
 </table>
+
+
+
+</body>
+</html>

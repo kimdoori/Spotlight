@@ -5,31 +5,51 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 폼</title>
+<link rel="stylesheet" href="css/form.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="js/login.js"></script>
+
 </head>
 <body>
-<center>
-	<form action="loginProc.jsp" method="post">
-		<table border=1>
+<%
+String contentpage = request.getParameter("CONTENTPAGE");
+
+%>
+<!-- <div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <button>login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
+</div> -->
+
+
+	<form action="loginProc.jsp?CONTENTPAGE=<%=contentpage %>" method="post" class="login">
+	<input hidden="true">
+		<table border=1 cellspacing=0 cellpadding=0>
 			<tr>
-				<td>ID</td>
-				<td><input type="text" name="id"></td>
-							
+				<td><input type="text" name="id" placeholder="ID"></td>
+				<td rowspan="2" style="background-color:gray;"><div height="100%"><input type="submit" class="button" value="logIn"></div></td>			
 			</tr>
 			<tr>
-				<td>PW</td>
-				<td><input type="password" name="pw"></td>
-							
+				<td><input type="password" name="pw" placeholder="password"></td>			
 			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<input type="submit" value="로그인">
-					<input type="reset" value="취소">
-					
-				</td>
-			</tr>
+		
 		</table>
 
 	</form>
-</center>
+<a href="signup.jsp">- 회원가입</a><br>
+
 </body>
 </html>

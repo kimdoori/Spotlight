@@ -1,5 +1,7 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,10 +17,17 @@
 	String contents =request.getParameter("content");
 	
 	Date date = new Date();
-	Long time = date.getTime();
+	SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat simpleTime = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+
+	String w_date = simpleDate.format(date);
+	String w_time = simpleTime.format(date);
+	
+	
+	
 	String user = (String)session.getAttribute("id");
 
-	String filename = time +user +".txt";
+	String filename = w_date +user +".txt";
 	
 	
 	PrintWriter writer = null;
@@ -27,11 +36,10 @@
 		String filePath = application.getRealPath("/WEB-INF/review/"+filename);
 		//out.println(filePath);
 		writer = new PrintWriter(filePath);
-		writer.printf("%s %n",time);
+		writer.printf("%s %n",w_time);
 		writer.printf("%s %n",user);
 		writer.println(contents);
 		
-		//out.println("<font color='red'><b>게시물</font>이 저장되었습니다.</b>");
 		writer.flush();
 		result="ok";
 	}catch(Exception e){

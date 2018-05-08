@@ -67,10 +67,11 @@ margin:0px;
  
  
 #top{
-background-color:black;
- margin: 0 auto;
-  padding: 10px 0;
-  width: 100%;
+  /* 	position: fixed; */
+	background-color:black;
+	margin: 0px;
+  	width: 100%;
+  	marin-top:0px;
 }
 
 .area {
@@ -146,6 +147,5 @@ background-color:black;
 </ul>
 
 </div>
-</body>
 </body>
 </html>

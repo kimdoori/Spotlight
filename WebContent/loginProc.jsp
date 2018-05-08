@@ -16,6 +16,8 @@
 	<%
 		response.setContentType("text/html;charset='UTF-8");
 		request.setCharacterEncoding("UTF-8");
+		
+		String contentpage = request.getParameter("CONTENTPAGE");
 
 		String input_id = request.getParameter("id");
 		String input_pw = request.getParameter("pw");
@@ -62,7 +64,7 @@
 			out.println("<script>alert('[회원이 아닙니다.]');</script>");
 	%>
 	<jsp:forward page="framePage.jsp">
-		<jsp:param name="CONTENTPAGE" value="reviewProc.jsp" />
+		<jsp:param name="CONTENTPAGE" value="<%=contentpage %>" />
 	</jsp:forward>
 	<%
 		return;
@@ -73,7 +75,7 @@
 			session.setAttribute("name", user_name);
 	%>
 	<jsp:forward page="framePage.jsp">
-		<jsp:param name="CONTENTPAGE" value="reviewProc.jsp" />
+		<jsp:param name="CONTENTPAGE" value="<%=contentpage %>" />
 	</jsp:forward>
 	<%
 		out.println("<script>alert('[로그인 성공]');=");
@@ -83,7 +85,7 @@
 			out.println("<script>alert('[비밀번호를 확인하세요.]');</script>");
 	%>
 	<jsp:forward page="framePage.jsp">
-		<jsp:param name="CONTENTPAGE" value="reviewProc.jsp" />
+		<jsp:param name="CONTENTPAGE" value="<%=contentpage %>" />
 	</jsp:forward>
 	<%
 		}

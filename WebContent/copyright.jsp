@@ -32,5 +32,7 @@ button 애니메이션 : https://www.w3schools.com/howto/howto_css_animate_butto
 rolling : https://tympanus.net/codrops/2012/04/17/rotating-words-with-css-animations/
 
 네온사인 : http://nineism.tistory.com/91
+
+영화티켓 : https://codepen.io/verpixelt/pen/cEJLa?utm_source=bypeople
 </body>
 </html>

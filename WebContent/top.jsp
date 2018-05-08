@@ -114,7 +114,7 @@ background-color:black;
 <tr>
 <td>
 <div style="text-align:center;">
-<img src="webImage/logo_spotlight.png">
+<a href="index.jsp"><img src="webImage/logo_spotlight.png"></a>
 </div>
 </td>
 </tr>

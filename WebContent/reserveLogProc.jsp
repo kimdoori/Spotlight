@@ -10,62 +10,46 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 글쓰기 - 결과화면</title>
-<style>
-.card {
-	margin:50px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 260px;
-    color:black;
-}
+<link rel="stylesheet" href="css/ticket.css">
 
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        color:black;
-    
-}
-
-.container {
-    padding: 2px 2px;
-}
-.area {
-width:100%;
-  margin: 0;
-  padding: 0;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-}
-
-.area:before {
-  display: inline-block;
-  width: 1px;
-  content: '';
-}
-
-.area:after {
-  display: inline-block;
-  width: 1px;
-  content: '';
-}
-
-.item {
-  display: inline-block;
-  text-align: center;
-  line-height: 30px;
-}
-</style>
 
 </head>
 
 <body>
-<button onclick="location='reviewWrite.jsp'">리뷰남기기</button>
-	<ul>
+<!-- <button onclick="location='reviewWrite.jsp'">리뷰남기기</button>
+ -->
+<div class="cardWrap">
+  <div class="card cardLeft">
+    <h1>Startup <span>Cinema</span></h1>
+    <div class="title">
+      <h2>How I met your Mother</h2>
+      <span>movie</span>
+    </div>
+    <div class="name">
+      <h2>Vladimir Kudinov</h2>
+      <span>name</span>
+    </div>
+    <div class="seat">
+      <h2>156</h2>
+      <span>seat</span>
+    </div>
+    <div class="time">
+      <h2>12:00</h2>
+      <span>time</span>
+    </div>
+    
+  </div>
+  <div class="card cardRight">
+    <div class="eye"></div>
+    <div class="number">
+      <h3>156</h3>
+      <span>seat</span>
+    </div>
+    <div class="barcode"></div>
+  </div>
+
+</div>
+	<%-- <ul>
 		<%
 			
 		%>
@@ -111,10 +95,7 @@ width:100%;
 				out.println("파일을 읽을 수 없습니다.");
 			}
 		%>
-	</ul>
-	<%-- 이름 : <%=name %><br>
-제목 : <%=title %><br>
-내용 : <%=content %><br>
- --%>
+	</ul> --%>
+
 </body>
 </html>

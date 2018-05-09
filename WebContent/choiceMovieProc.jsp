@@ -299,6 +299,7 @@ for (var i = 0; i < x.length; i++) {
 <script>
 $('#selected-date').on('DOMSubtreeModified',function(){
 	alert(document.getElementById("selected-date").format("YYYYmmdd")));
+	//TODO : 날짜 형식바꿔서 넘기기
 	if(movieName != "")
 	  document.getElementById("movie-time").src="choiceTime.jsp?selectedMovie="+movieName+"&selectedDate="+document.getElementById("selected-date").toDateString();
 	})

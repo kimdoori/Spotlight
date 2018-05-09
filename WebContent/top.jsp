@@ -119,7 +119,13 @@ background-color:rgb(0,0,30);
   text-align: center;
   line-height: 30px;
 }
+#user{
+  		color: #f1f1f1;
+	    padding: 8px;
+	    font-size: 20px;
+	    margin-right:30px;
 
+}
 </style>
 </head>
 <body>
@@ -127,8 +133,19 @@ background-color:rgb(0,0,30);
 <tr>
 <td>
 <div style="text-align:right;padding-right:100px;">
-<a href="signin.jsp"><button class="login-menu-btn">sign in</button></a>
-<a href="signup.jsp"><button class="login-menu-btn">sign up</button></a>
+<%
+	String userName = (String)session.getAttribute("name");
+	if(userName!=null){
+	out.print("<span id='user'>"+userName+"님 환영합니다.</span>");
+	out.print("<a href='modifyInfo.jsp'><button class='login-menu-btn'>modify info</button></a>");
+	out.print("<a href='signout.jsp'><button class='login-menu-btn'>sign out</button></a>");
+	}else{
+		out.print("<a href='signin.jsp'><button class='login-menu-btn'>sign in</button></a>");
+		out.print("<a href='signup.jsp'><button class='login-menu-btn'>sign up</button></a>");
+	}
+
+	
+%>
 </div></td>
 </tr>
 <tr>

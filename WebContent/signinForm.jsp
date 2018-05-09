@@ -9,6 +9,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/login.css">
 
 <script src="js/login.js"></script>
 
@@ -37,7 +38,7 @@ String contentpage = request.getParameter("CONTENTPAGE");
 </div> -->
 
 
-	<form action="loginProc.jsp?CONTENTPAGE=<%=contentpage %>" method="post" class="login">
+	<%-- <form action="loginProc.jsp?CONTENTPAGE=<%=contentpage %>" method="post" class="login">
 	<input hidden="true">
 		<table border=1 cellspacing=0 cellpadding=0>
 			<tr>
@@ -50,7 +51,31 @@ String contentpage = request.getParameter("CONTENTPAGE");
 		
 		</table>
 
-	</form>
+	</form> --%>
+	<div class="login-page">
+  <div class="form">
+    <table width="100%">
+    <tr>
+    
+    <td width="400px" style="border-right:1px solid white; padding:45px;">
+    <form class="login-form"  action="signinProc.jsp?CONTENTPAGE=<%=contentpage %>" method="post" class="login">
+    <input hidden="true">
+      <input type="text" name="id" placeholder="username"/>
+      <input type="password" name="pw" placeholder="password"/>
+      <input type="submit" class="button" value="sign In">
+      <p class="message">Not registered? <a href="signup.jsp">Create an account</a></p>
+    </form>
+    </td>
+   <td>
+    <div style="text-align:center; width:100%;">
+    <img src="images/ad.jpg">
+    </div>
+    </td>
+    </tr>
+    
+    </table>
+  </div>
+</div>
 <a href="signup.jsp">- 회원가입</a><br>
 
 </body>

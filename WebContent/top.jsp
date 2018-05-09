@@ -9,7 +9,7 @@
 body,html{
 padding:0px;
 margin:0px;
-background-color:black;
+background-color:rgb(0,0,30);
 }
 
 .top-menu-container {
@@ -19,24 +19,35 @@ background-color:black;
 }
 
 .top-menu-btn { 
-    background-color: black;
+   background-color:rgb(0,0,30,0);
     color: white;
-    padding: 16px;
+    padding: 13px;
     font-size: 20px;
     border: none;
     cursor: pointer;
+  /*   font-family:'HELLO DENVER DISPLAY BOLD Bold','neon'; */
 }
 
 .top-menu-btn a { 
     color: white;
     text-decoration: none;
 }
+.login-menu-btn { 
+   background-color:rgb(0,0,30,0);
+    color: #f1f1f1;
+    padding: 8px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    margin-right:30px;
+  /*   font-family:'HELLO DENVER DISPLAY BOLD Bold','neon'; */
+}
 
 .top-menu-detail {
     display: none;
     position: absolute;
     right: 0;
-    background-color: rgb(37, 37, 37);
+    background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -50,8 +61,8 @@ background-color:black;
 }
 
 .top-menu-detail a:hover {
-	background-color: #f1f1f1;
-    
+	
+    background-color: rgb(37, 37, 37);
 }
 
 .top-menu-container:hover .top-menu-detail {
@@ -61,7 +72,9 @@ background-color:black;
 }
 
 .top-menu-container:hover .top-menu-btn {
-    text-shadow:3px 3px 5px yellow;
+    text-shadow:4px 4px 8px yellow;
+    background-color:rgb(0,0,0,0.5);
+    
 /*    background-color: rgb(24, 24, 23);
 */  
 }
@@ -69,7 +82,7 @@ background-color:black;
  
 #top{
   /* 	position: fixed; */
-	background-color:black;
+	background-color:rgb(0,0,30,0);
 	margin: 0px;
   	width: 100%;
   	marin-top:0px;
@@ -113,13 +126,21 @@ background-color:black;
 <table width="100%">
 <tr>
 <td>
-<div style="text-align:center;">
+<div style="text-align:right;padding-right:100px;">
+<a href="signin.jsp"><button class="login-menu-btn">sign in</button></a>
+<a href="signup.jsp"><button class="login-menu-btn">sign up</button></a>
+</div></td>
+</tr>
+<tr>
+<td>
+<div style="text-align:center;padding:8px;">
 <a href="index.jsp"><img src="webImage/logo_spotlight.png"></a>
 </div>
 </td>
 </tr>
-</table>
 
+<tr>
+<td style="border-bottom:1px solid white;border-top:1px solid white">
 <div id="top">
 
  <ul class="area">
@@ -158,5 +179,10 @@ background-color:black;
 </ul>
 
 </div>
+</td>
+</tr>
+</table>
+
+
 </body>
 </html>

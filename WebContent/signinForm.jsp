@@ -7,7 +7,9 @@
 <title>로그인 폼</title>
 <link rel="stylesheet" href="css/form.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <script src="js/login.js"></script>
 
 </head>

@@ -6,6 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Spotlight</title>
+<link rel="stylesheet" href="css/form.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <style>
 body,html{
 	width:100%;
@@ -14,6 +18,9 @@ body,html{
 	padding:0px;
 /* 	background-image:url("webImage/logo.jpg");
  */
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
 }
 #main{
 /* margin-top:5%;
@@ -34,19 +41,19 @@ body,html{
 
 <%--  <jsp:include page="top.jsp" flush="false"/>
  --%>
-<table id="main" width="100%"  border="1" cellspacing="0" style="border:1px solid black;">
-<tr style="border-bottom:1px solid white">
-	<td colspan="2">
+<table id="main" width="100%"  border="1" cellspacing="0" style="border:1px solid black;background-image:url('webImage/wall.jpg');background-repeat:repeat;">
+<tr>
+	<td>
 		<jsp:include page="top.jsp" flush="false"/>
 
 	</td>
 </tr> 
-<tr height="850px"  style="background-image:url('webImage/wall.jpg');background-repeat:repeat;">
-	<td width=15% valign="top"  style="background-color:rgb(10,10,10,0.8);" >
+<tr height="850px" >
+	<%-- <td width=15% valign="top"  style="background-color:rgb(10,10,10,0.8);" >
 		<jsp:include page="left.jsp" flush="false">
 			<jsp:param name="CONTENTPAGE" value="<%=contentpage %>"/>
 		</jsp:include>
-	</td>
+	</td> --%>
 	<td width=85% valign="top">
 		<jsp:include page="<%= contentpage %>"></jsp:include>
 	</td>

@@ -11,15 +11,15 @@
 <%
 String result = request.getParameter("send");
 if(result.equals("ok")){
-	out.println("<div style='text-align:center;'><b>회원가입이 완료되었습니다.</b></div>");
+	 out.println("<script>alert('회원가입에 성공했습니다.');location.href='index.jsp';</script>");
 
 }else{
-	out.println("<div style='text-align:center;'><b>회원가입에 실패했습니다.</b></div>");
+	 out.println("<script>alert('회원가입에 실패했습니다.');location.href='index.jsp';</script>");
 
 }
 %>
 
-<meta http-equiv='refresh' content='2;url=index.jsp'>
+<!-- <meta http-equiv='refresh' content='1;url=index.jsp'> -->
 
 </body>
 </html>

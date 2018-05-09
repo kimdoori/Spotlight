@@ -52,18 +52,18 @@ String contentpage = request.getParameter("CONTENTPAGE");
 		</table>
 
 	</form> --%>
-	<div class="login-page">
+	<div class="signin-page">
   <div class="form">
     <table width="100%">
     <tr>
     
     <td width="400px" style="border-right:1px solid white; padding:45px;">
-    <form class="login-form"  action="signinProc.jsp?CONTENTPAGE=<%=contentpage %>" method="post" class="login">
+    <form class="login-form"  action="signinProc.jsp" method="post" class="login">
     <input hidden="true">
-      <input type="text" name="id" placeholder="username"/>
+      <input type="text" name="id" placeholder="ID"/>
       <input type="password" name="pw" placeholder="password"/>
       <input type="submit" class="button" value="sign In">
-      <p class="message">Not registered? <a href="signup.jsp">Create an account</a></p>
+      <div style="text-align:center"><p class="message">Not registered? <a href="signup.jsp">Create an account</a></p></div>
     </form>
     </td>
    <td>
@@ -76,7 +76,7 @@ String contentpage = request.getParameter("CONTENTPAGE");
     </table>
   </div>
 </div>
-<a href="signup.jsp">- 회원가입</a><br>
+
 
 </body>
 </html>

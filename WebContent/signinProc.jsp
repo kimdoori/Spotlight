@@ -17,8 +17,6 @@
 		response.setContentType("text/html;charset='UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
-		String contentpage = request.getParameter("CONTENTPAGE");
-
 		String input_id = request.getParameter("id");
 		String input_pw = request.getParameter("pw");
 		String user_pw = "";
@@ -61,11 +59,12 @@
 		}
 
 		if (!isExist) {//존재하지 않음
-			out.println("<script>alert('[회원이 아닙니다.]');</script>");
+			System.out.println("s");
+			out.println("<script>alert('회원이 아닙니다.');location.href='signin.jsp';</script>");
 	%>
-	<jsp:forward page="framePage.jsp">
+	<%-- <jsp:forward page="framePage.jsp">
 		<jsp:param name="CONTENTPAGE" value="<%=contentpage %>" />
-	</jsp:forward>
+	</jsp:forward> --%>
 	<%
 		return;
 		}
@@ -73,20 +72,22 @@
 
 			session.setAttribute("id", input_id);
 			session.setAttribute("name", user_name);
-	%>
-	<jsp:forward page="framePage.jsp">
-		<jsp:param name="CONTENTPAGE" value="<%=contentpage %>" />
-	</jsp:forward>
-	<%
-		out.println("<script>alert('[로그인 성공]');=");
+			out.println("<script>location.href='index.jsp';</script>");
 
+	%>
+	<%-- <jsp:forward page="framePage.jsp">
+		<jsp:param name="CONTENTPAGE" value="<%=contentpage %>" />
+	</jsp:forward>  --%>
+	
+		
+<%
 		} else {
 
-			out.println("<script>alert('[비밀번호를 확인하세요.]');</script>");
+			out.println("<script>alert('비밀번호를 확인하세요.');location.href='signin.jsp';</script>");
 	%>
-	<jsp:forward page="framePage.jsp">
+	<%-- <jsp:forward page="framePage.jsp">
 		<jsp:param name="CONTENTPAGE" value="<%=contentpage %>" />
-	</jsp:forward>
+	</jsp:forward> --%>
 	<%
 		}
 	%>

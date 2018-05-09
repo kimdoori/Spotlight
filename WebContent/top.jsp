@@ -19,6 +19,7 @@ background-color:rgb(0,0,30);
 }
 
 .top-menu-btn { 
+    min-width: 300px;
    background-color:rgb(0,0,30,0);
     color: white;
     padding: 13px;
@@ -137,11 +138,11 @@ background-color:rgb(0,0,30);
 	String userName = (String)session.getAttribute("name");
 	if(userName!=null){
 	out.print("<span id='user'>"+userName+"님 환영합니다.</span>");
-	out.print("<a href='modifyInfo.jsp'><button class='login-menu-btn'>modify info</button></a>");
-	out.print("<a href='signout.jsp'><button class='login-menu-btn'>sign out</button></a>");
+	out.print("<a href='modifyInfo.jsp'><button class='login-menu-btn'>Account</button></a>");
+	out.print("<a href='signout.jsp'><button class='login-menu-btn'>Sign out</button></a>");
 	}else{
-		out.print("<a href='signin.jsp'><button class='login-menu-btn'>sign in</button></a>");
-		out.print("<a href='signup.jsp'><button class='login-menu-btn'>sign up</button></a>");
+		out.print("<a href='signin.jsp'><button class='login-menu-btn'>Sign in</button></a>");
+		out.print("<a href='signup.jsp'><button class='login-menu-btn'>Sign up</button></a>");
 	}
 
 	

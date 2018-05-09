@@ -40,5 +40,10 @@ review card : https://codepen.io/xhynk/pen/qrrLmv
 
 
 포토샵 네온 사인 :http://blog.naver.com/PostView.nhn?blogId=weheewon1&logNo=220513266308
+
+login form : https://codepen.io/colorlib/pen/rxddKy
+
+
+notice icon : https://www.freepik.com/free-icon/notification_743311.htm
 </body>
 </html>

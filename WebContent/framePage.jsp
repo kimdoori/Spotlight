@@ -34,20 +34,20 @@ body,html{
 
 <%--  <jsp:include page="top.jsp" flush="false"/>
  --%>
-<table id="main" width="100%"  border="1" cellspacing="0">
-<tr>
+<table id="main" width="100%"  border="1" cellspacing="0" style="border:1px solid black;">
+<tr style="border-bottom:1px solid white">
 	<td colspan="2">
 		<jsp:include page="top.jsp" flush="false"/>
 
 	</td>
 </tr> 
-<tr height="850px">
-	<td width=15% valign="top" >
+<tr height="850px"  style="background-image:url('webImage/wall.jpg');background-repeat:repeat;">
+	<td width=15% valign="top"  style="background-color:rgb(10,10,10,0.8);" >
 		<jsp:include page="left.jsp" flush="false">
 			<jsp:param name="CONTENTPAGE" value="<%=contentpage %>"/>
 		</jsp:include>
 	</td>
-	<td width=85% valign="top" style="background-image:url('webImage/wall.jpg');background-repeat:repeat;">
+	<td width=85% valign="top">
 		<jsp:include page="<%= contentpage %>"></jsp:include>
 	</td>
 	

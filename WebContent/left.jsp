@@ -7,7 +7,7 @@
 <body>
 <table width="100%">
 <tr>
-<td height="100px">
+<td height="100px" style="background-color:rgb(93,93,93,0.6);">
     
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -33,17 +33,17 @@
 
 </td>
 </tr>
-<tr>
-<td>
+<tr height="300px">
+<td style="background-color:rgb(93,93,93,0.6);">
 
 인기 영화<br>
-<div class="rw-words rw-words-1">
-			<span>1. 어벤져스:인피니티워</span>
-			<span>2. 챔피언</span>
-			<span>3. 원더스트럭</span>
-						<span>4. 그날,바다</span>
-						<span>5. 얼리맨</span>
-						<span>6. 매직빈</span>
+<div class="rw-words rw-words-1" style="background-color:rgb(93,93,93,0);">
+			<span style="background-color:rgb(93,93,93,0);">1. 어벤져스:인피니티워</span>
+			<span style="background-color:rgb(93,93,93,0);">2. 챔피언</span>
+			<span style="background-color:rgb(93,93,93,0);">3. 원더스트럭</span>
+						<span style="background-color:rgb(93,93,93,0);">4. 그날,바다</span>
+						<span style="background-color:rgb(93,93,93,0);">5. 얼리맨</span>
+						<span style="background-color:rgb(93,93,93,0);">6. 매직빈</span>
 			
 </div>
 </td>

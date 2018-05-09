@@ -2,5 +2,4 @@
     pageEncoding="UTF-8"%>
 <jsp:forward page="framePage.jsp">
 	<jsp:param name="CONTENTPAGE" value="moviePlayingProc.jsp"/>
-
 </jsp:forward>

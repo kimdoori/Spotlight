@@ -6,6 +6,8 @@
     width: 260px;
     color:black;
     background-color:white;
+    border-radius:10px;
+   
 }
 
 .card:hover {
@@ -13,7 +15,16 @@
         color:black;
     
 }
-
+.title{
+	border-radius:10px 10px 0px 0px; 
+	  background:rgba(255, 255, 72,0.7);
+	
+}
+.writer{
+	border-radius:0px 0px 10px 10px; 
+	 background:rgba(150, 150, 150,0.7);
+	
+}
 .container {
     padding: 2px 2px;
 }

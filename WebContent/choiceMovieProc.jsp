@@ -17,7 +17,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title></title>
 <link rel="stylesheet" href="css/reserve.css">
+<style>
+/* Scrollbar styles */
+.movie-container{
+ overflow:scroll;
+ height:400px;
+ background-color:rgb(0,0,0,0);
+ border-top:1px solid white;
+ border-bottom:1px solid white;
+ 
+ }
+ 
+.movie-container::-webkit-scrollbar{
+width: 12px;
+height: 12px;
+}
+
+.movie-container::-webkit-scrollbar-track {
+border: 0px solid yellow;
+border-radius: 5px;
+}
+
+.movie-container::-webkit-scrollbar-thumb {
+background: yellow;  
+border-radius: 5px;
+}
+
+.movie-container::-webkit-scrollbar-thumb:hover {
+background: #88ba1c;  
+}
+ 
+</style>
+
 </head>
 <body>
 
@@ -87,14 +120,16 @@ e.printStackTrace();
 return null;
 }
 %> --%>
-<table width="100%" border="1px">
+<form onchange="getSelectedMovie()">
+<table id="movie-table" border="1px">
 <tr>
-<th style="width:30%">영화</th>
-<th style="width:30%">날짜</th>
-<th>시간</th>
+<th id="tabel-title" width="30%">영화</th>
+<th id="tabel-title" width="37%">날짜</th>
+<th id="tabel-title">시간</th>
 </tr>
 <tr>
 <td id="movie">
+<div class="movie-container">
 <%
 
 try {
@@ -206,7 +241,7 @@ try {
 			String str = reader.readLine();
 			if (str == null || str.equals(""))
 				break;
-			out.print("<div class='movieList'><h4><b>"+str+"</b></h4></div><br>");
+			out.print("<div class='movieList'>"+str+"</div><br>");
 			
 		}
 	   
@@ -225,30 +260,50 @@ e.printStackTrace();
 	
 	
 %>
+
+
 <script>
+var movieName="";
 var x = document.getElementsByClassName('movieList')
 for (var i = 0; i < x.length; i++) {
     x[i].addEventListener("click", function(){
 
     var selectedEl = document.querySelector(".selected");
     if(selectedEl){
+        movieName= "";
+
         selectedEl.classList.remove("selected");
     }
+    movieName= this.innerHTML;
     this.classList.add("selected");
 
     }, false);
 }
 </script>
-
+</div>
 </td>
 
 <td>
 <jsp:include page="calendar.jsp" flush="false"/>
 </td>
 
-<td></td>
+<td>
+<iframe src="" id="movie-time" width="100%" height="400px"></iframe>
+</td>
 </tr>
 </table>
 <button onclick="location='choiceSheet.jsp'">좌석 선택하기</button>
+</form>
+
+
+<script>
+$('#selected-date').on('DOMSubtreeModified',function(){
+	alert(document.getElementById("selected-date").format("YYYYmmdd")));
+	if(movieName != "")
+	  document.getElementById("movie-time").src="choiceTime.jsp?selectedMovie="+movieName+"&selectedDate="+document.getElementById("selected-date").toDateString();
+	})
+	
+
+</script>
 </body>
 </html>

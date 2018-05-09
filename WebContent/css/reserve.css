@@ -1,5 +1,27 @@
+#movie-table{
+	background:rgba(255,255,255,0.9);
+	border: 1px solid black;
+	width:100%;
+}
+
+#tabel-title{
+	
+  text-transform: uppercase;
+
+  background:rgba(255, 255, 72,0.8);
+  /* width: 360PX;*/
+  
+  padding: 15px;
+  color: black;
+  font-size: 18px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+	
+}
+
 .selected{
-	background-color:red;
+	background-color:#22250b;
+	color:white;
 }
 .area {
 width:100%;
@@ -28,7 +50,7 @@ width:100%;
 }
 
 .movieList {
-  
+  font-weight:bold;
   text-align: center;
   padding : 5px;
 }
@@ -108,3 +130,5 @@ width:100%;
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+

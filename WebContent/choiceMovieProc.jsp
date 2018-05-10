@@ -260,7 +260,7 @@ try {//movie/20180510/어벤져스워/12_30.txt
 
 				
 				dailyfile=formatter.format(date)+"/list.txt";
-				
+				System.out.println("오늘의 날짜는"+dailyfile);
 				reader = new BufferedReader(new FileReader(filepath + dailyfile));
 
 				writer = null;
@@ -290,7 +290,7 @@ try {//movie/20180510/어벤져스워/12_30.txt
 						
 						for(int j=0;j<10;j++){
 							for(int k=0;k<10;k++){
-								writer.printf("%d ",0);
+								writer.printf("%s ",(char)(j+'A')+String.valueOf(k+1));
 							}
 							writer.printf("%n");
 						}

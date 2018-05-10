@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="java.io.FileReader"%>
 <%@page import="java.io.BufferedReader"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,9 +10,52 @@
 <meta charset="UTF-8">
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/reserve.css">
-<title>Insert title here</title>
 
-<%! int ticketCnt=3; %>
+ 
+<title>Insert title here</title>
+<style>
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width:460px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+<%! int ticketCnt=3;
+	String sheetStr="";
+%>
 <script>
 function calculate(){
 	var adult = document.getElementById("adult");
@@ -117,12 +162,12 @@ $(document).ready(function() {
 				continue;
 			}
 
-			if(sheet[count].equals("0")){//예매되지 않은 자석
-				out.println("<input name='chk' type='checkbox' value="+(char)('A'+i-1)+(j+1)+" class='sheet' disabled></input>");
+			if(sheet[count].equals("0")){//예매된 좌석
+				out.println("<input name='alreadychk' type='checkbox' class='none-sheet' disabled></input>");
 				count++;
 			}
 			else{
-				out.println("<input name='alreadychk' type='checkbox' class='none-sheet' disabled></input>");
+				out.println("<input name='chk' type='checkbox' value="+(char)('A'+i-1)+(j+1)+" class='sheet' disabled></input>");
 				count++;
 			}
 			
@@ -137,9 +182,85 @@ $(document).ready(function() {
 </tr>
 
 </table>
-TODO:: CHECK BOX 값 넘기기 => 넘겨서 파일에 저장  => 나의 예매 목록에 띄우기 
-<input type="submit"  value="예매하기" onclick="window.open('reserve.jsp','window_name','width=460,height=380,location=no,status=no,scrollbars=yes');">
 </form>
+TODO:: CHECK BOX 값 넘기기 => 넘겨서 파일에 저장  => 나의 예매 목록에 띄우기 
+<button id="goReserve">예매하기</button>
+<!-- Modal -->
+  <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+     <jsp:include page="reserve.jsp" flush="false">
+			<jsp:param name="movieName" value="<%=movieName %>"/>
+			<jsp:param name="selectedDate" value="<%=selectedDate %>"/>
+			<jsp:param name="selectedTime" value="<%=selectedTime %>"/>
+			<jsp:param name="sheet" value="<%=sheetStr %>"/>
+			
+		
+		</jsp:include>
+  </div>
+
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("goReserve");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+	
+    modal.style.display = "block";
+	
+	
+//todo : 선택된 만큼 체크했는   	지
+	var sheet = "";
+   	var isSheetChk = false;
+    var arr_sheet = document.getElementsByName("chk");
+    for(var i=0;i<arr_sheet.length;i++){
+        if(arr_sheet[i].checked == true) {
+        	sheet+=arr_sheet[i].value+",";
+        	
+        }
+    }
+   alert(sheet);
+   <%
+    sheetStr="<script>document.writeln(sheet);alert(sheet);</script>";
+    %>
+    
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<script>
+    var v="xyz";
+</script>
+<% 
+    String st="<script>document.writeln(v)</script>";
+    System.out.println("value="+st); 
+%>
+<script>
+/* var next = document.getElementById("next");
+next.onclick=function (){
+	window.open('reserve.jsp','window_name','width=460,height=380,location=no,status=no,scrollbars=yes');
+} */
+
+</script>
 </body>
 </html>
 

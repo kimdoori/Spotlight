@@ -137,7 +137,7 @@ $(document).ready(function() {
 </tr>
 
 </table>
-
+TODO:: CHECK BOX 값 넘기기 => 넘겨서 파일에 저장  => 나의 예매 목록에 띄우기 
 <input type="submit"  value="예매하기" onclick="window.open('reserve.jsp','window_name','width=460,height=380,location=no,status=no,scrollbars=yes');">
 </form>
 </body>

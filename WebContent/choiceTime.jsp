@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="css/reserve.css">
 </head>
 <body>
+<div id="timeSpan" hidden="true"></div>
+
 <%
 	request.setCharacterEncoding("UTF-8");
 	String selectedMovie = request.getParameter("selectedMovie");
@@ -45,7 +47,8 @@ out.println(dailyfile); */
 						String movieTime = tempFileName.replaceAll(".txt","").replaceAll("_"," : ");
 						String  restSheet= reader.readLine();
 						/* out.println("<div><p>"+movieTime+"</p>"+restSheet+"</div>"); */
-						out.print("<div class='movieList'>"+movieTime+"<br>잔여좌석 "+restSheet+"</div><br>");
+						out.println("<div class='movieList'>"+movieTime+"<br>잔여좌석 "+restSheet+"</div><br>");
+						
 						/* String  writer= reader.readLine();
 						StringBuffer contents = new StringBuffer();
 						
@@ -79,22 +82,24 @@ out.println(dailyfile); */
 		%>
 		
 		<script>
-var movieName="";
+var movieTime="";
 var x = document.getElementsByClassName('movieList')
 for (var i = 0; i < x.length; i++) {
     x[i].addEventListener("click", function(){
 
     var selectedEl = document.querySelector(".selected");
     if(selectedEl){
-        movieName= "";
+    	movieTime= "";
 
         selectedEl.classList.remove("selected");
     }
-    movieName= this.innerHTML;
+    movieTime= this.innerHTML;
     this.classList.add("selected");
+    document.getElementById('timeSpan').innerHTML = this.innerHTML.substring(0,this.innerHTML.indexOf("<", 0));
 
     }, false);
 }
+
 </script>
 </body>
 </html>

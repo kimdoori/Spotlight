@@ -2,8 +2,15 @@
 	background:rgba(255,255,255,0.9);
 	border: 1px solid black;
 	width:100%;
+	
 }
-
+#sheet-table{
+	background:rgba(255,255,255,0.9);
+	border: 1px solid black;
+	width:100%;
+	padding:30px;
+	
+}
 #tabel-title{
 	
   text-transform: uppercase;
@@ -54,6 +61,15 @@ width:100%;
   text-align: center;
   padding : 5px;
 }
+.none-sheet{
+	width:20px;
+	height:20px;
+	background-color:rgb(110, 109, 109);
+	margin : 1px;
+	display:inline-block;
+	border-radius: 3px;
+	
+}
 .sheet{
 	width:20px;
 	height:20px;
@@ -72,7 +88,7 @@ width:100%;
 .sheet-num{
 	width:20px;
 	height:20px;
-	background-color:white;
+	background-color:rgba(0,0,0,0);
 	margin : 1px;
 	display:inline-block;
 	font-size:15px;

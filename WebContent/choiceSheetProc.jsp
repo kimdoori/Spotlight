@@ -1,3 +1,5 @@
+<%@page import="java.io.FileReader"%>
+<%@page import="java.io.BufferedReader"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -55,7 +57,12 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<form oninput="calculate()">
+<form oninput="calculate()"  action="reserve.jsp">
+<table id="sheet-table">
+
+<tr>
+<td>
+
 일반
 <input id="adult" type="number" min="0" max="5" step="1" value="0">
 청소년
@@ -63,12 +70,43 @@ $(document).ready(function() {
 
 <output id="numOfReserve"></output><output id="ticketCnt" hidden="true">0</output>
 
-</form>
-<table id="movie-table">
-<div style="text-align:center">
+
+</td>
+</tr>
+<tr>
+<td>
+<div style="text-align:center;background:rgba(255,255,255,0);">
 <%
+	request.setCharacterEncoding("UTF-8");
+	String movieName = request.getParameter("movieName");
+	String selectedDate = request.getParameter("selectedDate");
+	String selectedTime = request.getParameter("selectedTime");
+	
+	
+	 BufferedReader reader = null;
+	 String[] sheet=null;
+	try{
+		String filePath=application.getRealPath("/WEB-INF/movie/"+selectedDate+"/"+movieName+"/"+selectedTime+".txt");
+		//out.println(filePath);
+		reader = new BufferedReader(new FileReader(filePath));
+		
+		StringBuffer sb = new StringBuffer();
+		while(true){
+			String str = reader.readLine();
+			if(str == null )break;
+			
+			sb.append(str);
+		}
+		sheet = sb.toString().split(" ");
+		
+	}catch(Exception e){
+		out.println("지정된 파일을 찾을 수 없습니다.");
+	} 
+	
+	
 	out.println("<div class='sheet-num'></div>");
 
+	int count=0;
 	for(int i=0;i<11;i++){
 		if(i>0)
 			out.println("<div class='sheet-num'>"+(char)('A'+i-1)+"</div>");
@@ -79,7 +117,15 @@ $(document).ready(function() {
 				continue;
 			}
 
-			out.println("<input name='chk' type='checkbox' class='sheet' disabled></input>");
+			if(sheet[count].equals("0")){//예매되지 않은 자석
+				out.println("<input name='chk' type='checkbox' value="+(char)('A'+i-1)+(j+1)+" class='sheet' disabled></input>");
+				count++;
+			}
+			else{
+				out.println("<input name='alreadychk' type='checkbox' class='none-sheet' disabled></input>");
+				count++;
+			}
+			
 			
 		}
 		out.print("<br>");
@@ -87,9 +133,13 @@ $(document).ready(function() {
 
 %>
 </div>
-</table>
-<button onclick="window.open('reserve.jsp','window_name','width=460,height=380,location=no,status=no,scrollbars=yes');">예매하기</button>
+</td>
+</tr>
 
+</table>
+
+<input type="submit"  value="예매하기" onclick="window.open('reserve.jsp','window_name','width=460,height=380,location=no,status=no,scrollbars=yes');">
+</form>
 </body>
 </html>
 

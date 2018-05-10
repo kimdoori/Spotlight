@@ -50,10 +50,19 @@ background: #88ba1c;
 }
  
 </style>
+<script>
 
+</script>
 </head>
 <body>
+<script>
+var movieName="";
+var selectedDate="";
+var selectedTime="";
 
+
+
+</script>
 <%-- <%!
 
 String getDailyMovie(){
@@ -262,7 +271,7 @@ try {//movie/20180510/어벤져스워/12_30.txt
 					if (str == null || str.equals(""))
 						break;
 					//list.txt의 영화목록의 영화 이름으로 파일만들기
-						int numRandom = (int)( Math.random() * hourFileName.length);
+						int numRandom = (int)( Math.random() * hourFileName.length-1)+1;
 
 						for(int i=0;i<numRandom;i++){
 						hourRandom = (int)( Math.random() * hourFileName.length);
@@ -278,6 +287,13 @@ try {//movie/20180510/어벤져스워/12_30.txt
 						//out.println(filePath);
 						writer = new PrintWriter(filepath+"/"+daily+"/"+movieFileName+"/"+hourFileName[hourRandom]+"_"+minuteFileName[minuteRandom]+".txt");
 						writer.printf("%d %n",100);
+						
+						for(int j=0;j<10;j++){
+							for(int k=0;k<10;k++){
+								writer.printf("%d ",0);
+							}
+							writer.printf("%n");
+						}
 						writer.flush();
 
 						//TODO : 좌석 그리기
@@ -330,11 +346,10 @@ e.printStackTrace();
 </td>
 </tr>
 </table>
-<button onclick="location='choiceSheet.jsp'">좌석 선택하기</button>
+<button id="nextPage">좌석 선택하기</button>
 
 <script>
-var movieName="";
-var selectedDate="";
+
 var x = document.getElementsByClassName('movieList')
 for (var i = 0; i < x.length; i++) {
     x[i].addEventListener("click", function(){
@@ -362,15 +377,25 @@ $('#selected-date').on('DOMSubtreeModified',function(){
 	if(month<10){
 		month = '0'+month;
 	}
-	var simpleDate = year+month+day;
+	selectedDate = year+month+day;
 	
 	
 	//TODO : 날짜 형식바꿔서 넘기기
 	if(movieName != "")
-	  document.getElementById("movie-time").src="choiceTime.jsp?selectedMovie="+movieName+"&selectedDate="+simpleDate+"&dailyfile="+dailyfile;
+	  document.getElementById("movie-time").src="choiceTime.jsp?selectedMovie="+movieName+"&selectedDate="+selectedDate+"&dailyfile="+dailyfile;
 	})
 	
 
+	var nextButton = document.getElementById("nextPage");
+	nextButton.onclick=function(){
+		var time = $('#movie-time').contents().find('#timeSpan').html().toString();
+		if((movieName!= ""|| movieName!=null) && (selectedDate!= "" || selectedDate!=null)&& (time!= "" || time!=null))
+			location.href="choiceSheet.jsp?movieName="+movieName+"&selectedDate="+selectedDate+"&selectedTime="+time.replace(" : ","_");
+		else
+			alert("모든 항목을 선택해주세요.");
+	}
+		  
+		 
 	
 </script>
 

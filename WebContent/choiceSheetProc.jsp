@@ -64,6 +64,7 @@ $(document).ready(function() {
 <output id="numOfReserve"></output><output id="ticketCnt" hidden="true">0</output>
 
 </form>
+<table id="movie-table">
 <div style="text-align:center">
 <%
 	out.println("<div class='sheet-num'></div>");
@@ -86,6 +87,7 @@ $(document).ready(function() {
 
 %>
 </div>
+</table>
 <button onclick="window.open('reserve.jsp','window_name','width=460,height=380,location=no,status=no,scrollbars=yes');">예매하기</button>
 
 </body>

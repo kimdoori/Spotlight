@@ -120,7 +120,7 @@ e.printStackTrace();
 return null;
 }
 %> --%>
-<form onchange="getSelectedMovie()">
+
 <table id="movie-table" border="1px">
 <tr>
 <th id="tabel-title" width="30%">영화</th>
@@ -130,33 +130,38 @@ return null;
 <tr>
 <td id="movie">
 <div class="movie-container">
+<%! 
+Date date = new Date();
+%>
+
+
 <%
 
-try {
+try {//movie/20180510/어벤져스워/12_30.txt
+	//20180510파일이 있는 지 없다면 20180510/list.txt 생성
 	String filepath = application.getRealPath("/WEB-INF/movie/");
-
-	Date date = new Date();
+	System.out.println("movie 파일 경로"+filepath); 
+	SimpleDateFormat formatter=new SimpleDateFormat("yyyyMMdd");
+	String daily=formatter.format(date);
+	String dailyfile=daily+"/list.txt";
 	
-	SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
-	String dailyfile=formatter.format(date)+".txt";
+	out.print("<script>var dailyfile = "+formatter.format(date)+";</script>");
 	
 	BufferedReader reader = null;
-	boolean isExist  = false;
+	boolean isExist  = false;//오늘의 파일이 존재하는지
 	
 	File dirFile = new File(filepath);
 	File[] fileList = dirFile.listFiles();
+	
 	for (File tempFile : fileList) {
-		if (tempFile.isFile()) {
-			String tempFileName = tempFile.getName();
-			if(tempFileName.equals(dailyfile)){
-				isExist=true;
-				break;
-			}
+		if(tempFile.getName().equals(daily)){//movie/에 오늘의 디렉토리가 있는지
+			isExist=true;
+			break;
 		}
 	}
-	if(!isExist){
-	//TODO:api에서 가ㅕㅈ오
-	//	String movies = getDailyMovie();
+	if(!isExist){//오늘의 디렉토리가 존재하지 않는다면
+
+		//	String movies = getDailyMovie();
 		String moviesStr="";//지우기
 
 	//지우기
@@ -220,9 +225,14 @@ try {
 		//지우기
 	
 	
-	
+		//오늘의 디렉토리/list.txt 생성
 		PrintWriter writer = null;
 		String moviefilepath =filepath+dailyfile;
+		File moviefile = new File(filepath+daily);
+		 if(!moviefile.exists()){
+	            //디렉토리 생성 메서드
+	            moviefile.mkdirs();
+	      }
 
 		//out.println(filePath);
 		writer = new PrintWriter(moviefilepath);
@@ -231,26 +241,71 @@ try {
 		//out.println("<font color='red'><b>게시물</font>이 저장되었습니다.</b>");
 		writer.flush();
 		writer.close();
+	
+		//movie/오늘날짜/영화이름/12_30.txt 생성
+				String[] hourFileName ={"07","09","12","15","17","20","22"};
+				String[] minuteFileName ={"00","20","30","40"};
+				int hourRandom;
+				int minuteRandom;
+				filepath = application.getRealPath("/WEB-INF/movie/");
+
+				
+				dailyfile=formatter.format(date)+"/list.txt";
+				
+				reader = new BufferedReader(new FileReader(filepath + dailyfile));
+
+				writer = null;
+				String result;
+				
+				while (true) {
+					String str = reader.readLine();
+					if (str == null || str.equals(""))
+						break;
+					//list.txt의 영화목록의 영화 이름으로 파일만들기
+						int numRandom = (int)( Math.random() * hourFileName.length);
+
+						for(int i=0;i<numRandom;i++){
+						hourRandom = (int)( Math.random() * hourFileName.length);
+						minuteRandom = (int)( Math.random() * minuteFileName.length);
+						String movieFileName = str.replaceAll(".txt","").replaceAll("[:_!-+=~/?*()<>&]", "").replaceAll(" ","");
+						
+						moviefile = new File(filepath+"/"+daily+"/"+movieFileName);
+						 if(!moviefile.exists()){
+					            //디렉토리 생성 메서드
+					            moviefile.mkdirs();
+					      }
+
+						//out.println(filePath);
+						writer = new PrintWriter(filepath+"/"+daily+"/"+movieFileName+"/"+hourFileName[hourRandom]+"_"+minuteFileName[minuteRandom]+".txt");
+						writer.printf("%d %n",100);
+						writer.flush();
+
+						//TODO : 좌석 그리기
+						/* writer.printf("%s %n",user);
+						writer.println(contents); */
+						
+						}
+						
+				}
+				writer.flush();
+			
+				reader.close();
+			
+		
+
 	}
-	
-		reader = new BufferedReader(new FileReader(filepath + dailyfile));
+	//movie div 구성
+			reader = new BufferedReader(new FileReader(filepath + dailyfile));
 
-	
 		
-		while (true) {
-			String str = reader.readLine();
-			if (str == null || str.equals(""))
-				break;
-			out.print("<div class='movieList'>"+str+"</div><br>");
 			
-		}
-	   
-	
-		reader.close();
-			
-		
-
-	
+			while (true) {
+				String str = reader.readLine();
+				if (str == null || str.equals(""))
+					break;
+				out.print("<div class='movieList'>"+str+"</div><br>");
+				
+			}
 
 } catch (Exception e) {
 e.printStackTrace();
@@ -262,24 +317,7 @@ e.printStackTrace();
 %>
 
 
-<script>
-var movieName="";
-var x = document.getElementsByClassName('movieList')
-for (var i = 0; i < x.length; i++) {
-    x[i].addEventListener("click", function(){
 
-    var selectedEl = document.querySelector(".selected");
-    if(selectedEl){
-        movieName= "";
-
-        selectedEl.classList.remove("selected");
-    }
-    movieName= this.innerHTML;
-    this.classList.add("selected");
-
-    }, false);
-}
-</script>
 </div>
 </td>
 
@@ -293,18 +331,49 @@ for (var i = 0; i < x.length; i++) {
 </tr>
 </table>
 <button onclick="location='choiceSheet.jsp'">좌석 선택하기</button>
-</form>
-
 
 <script>
+var movieName="";
+var selectedDate="";
+var x = document.getElementsByClassName('movieList')
+for (var i = 0; i < x.length; i++) {
+    x[i].addEventListener("click", function(){
+
+    var selectedEl = document.querySelector(".selected");
+    if(selectedEl){
+        movieName= "";
+        selectedEl.classList.remove("selected");
+    }
+    movieName= this.innerHTML;
+    this.classList.add("selected");
+    
+  
+    }, false);
+}
+
 $('#selected-date').on('DOMSubtreeModified',function(){
-	alert(document.getElementById("selected-date").format("YYYYmmdd")));
+	selectedDate = new Date(document.getElementById("selected-date").innerHTML);
+	var year = selectedDate.getFullYear();
+	var month = selectedDate.getMonth()+1;
+	var day = selectedDate.getDate();
+	if(day < 10){
+		day='0'+day;
+	}
+	if(month<10){
+		month = '0'+month;
+	}
+	var simpleDate = year+month+day;
+	
+	
 	//TODO : 날짜 형식바꿔서 넘기기
 	if(movieName != "")
-	  document.getElementById("movie-time").src="choiceTime.jsp?selectedMovie="+movieName+"&selectedDate="+document.getElementById("selected-date").toDateString();
+	  document.getElementById("movie-time").src="choiceTime.jsp?selectedMovie="+movieName+"&selectedDate="+simpleDate+"&dailyfile="+dailyfile;
 	})
 	
 
+	
 </script>
+
+
 </body>
 </html>

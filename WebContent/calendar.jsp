@@ -33,7 +33,7 @@
 		</div>
 
 		<p class="demo-picked">
-			<span data-calendar-label="picked"id="selected-date"></span>
+			<span data-calendar-label="picked"id="selected-date" hidden="true"></span>
 		</p>
 
 		

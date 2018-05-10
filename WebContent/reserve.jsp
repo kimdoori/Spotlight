@@ -11,7 +11,7 @@
 </style>
 </head>
 <body>
-<form action="reserveProc.jsp" method="post">
+<!-- <form action="reserveProc.jsp" method="post"> -->
 
 <table style="border-collapse:collapse;" cellpadding="10px" rules="rows" frame="hsides">
 <tr>
@@ -55,7 +55,7 @@
 </table>
 
 
-
-</form>
+<!-- 
+</form> -->
 </body>
 </html>

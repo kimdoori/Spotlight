@@ -56,6 +56,13 @@
 <%! int ticketCnt=3;
 	String sheetStr="";
 %>
+<%
+request.setCharacterEncoding("UTF-8");
+	String movieName = request.getParameter("movieName");
+	String selectedDate = request.getParameter("selectedDate");
+	String selectedTime = request.getParameter("selectedTime");
+	System.out.println("여기선? "+ selectedTime);
+	%>
 <script>
 function calculate(){
 	var adult = document.getElementById("adult");
@@ -102,7 +109,8 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<form oninput="calculate()"  action="reserve.jsp">
+<form oninput="calculate()" method="post" action="reserveProc.jsp?movieName=<%=movieName %>&selectedDate=<%=selectedDate %>&selectedTime=<%=selectedTime %>" >
+
 <table id="sheet-table">
 
 <tr>
@@ -122,10 +130,7 @@ $(document).ready(function() {
 <td>
 <div style="text-align:center;background:rgba(255,255,255,0);">
 <%
-	request.setCharacterEncoding("UTF-8");
-	String movieName = request.getParameter("movieName");
-	String selectedDate = request.getParameter("selectedDate");
-	String selectedTime = request.getParameter("selectedTime");
+	
 	
 	
 	 BufferedReader reader = null;
@@ -182,26 +187,21 @@ $(document).ready(function() {
 </tr>
 
 </table>
-</form>
+
 TODO:: CHECK BOX 값 넘기기 => 넘겨서 파일에 저장  => 나의 예매 목록에 띄우기 
-<button id="goReserve">예매하기</button>
 <!-- Modal -->
   <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-     <jsp:include page="reserve.jsp" flush="false">
-			<jsp:param name="movieName" value="<%=movieName %>"/>
-			<jsp:param name="selectedDate" value="<%=selectedDate %>"/>
-			<jsp:param name="selectedTime" value="<%=selectedTime %>"/>
-			<jsp:param name="sheet" value="<%=sheetStr %>"/>
-			
-		
-		</jsp:include>
+     <jsp:include page="reserve.jsp" flush="false"/>
   </div>
 
 </div>
+</form>
+<button id="goReserve">예매하기</button>
+
 <script>
 // Get the modal
 var modal = document.getElementById('myModal');
@@ -216,22 +216,7 @@ var span = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
 	
     modal.style.display = "block";
-	
-	
-//todo : 선택된 만큼 체크했는   	지
-	var sheet = "";
-   	var isSheetChk = false;
-    var arr_sheet = document.getElementsByName("chk");
-    for(var i=0;i<arr_sheet.length;i++){
-        if(arr_sheet[i].checked == true) {
-        	sheet+=arr_sheet[i].value+",";
-        	
-        }
-    }
-   alert(sheet);
-   <%
-    sheetStr="<script>document.writeln(sheet);alert(sheet);</script>";
-    %>
+
     
 }
 
@@ -247,13 +232,7 @@ window.onclick = function(event) {
     }
 }
 </script>
-<script>
-    var v="xyz";
-</script>
-<% 
-    String st="<script>document.writeln(v)</script>";
-    System.out.println("value="+st); 
-%>
+
 <script>
 /* var next = document.getElementById("next");
 next.onclick=function (){

@@ -106,7 +106,7 @@ try{
          name = name.replaceAll("[:_!-+=~/?*()<>&]", "").replaceAll(" ","");
          out.println("<li class='item'><div class='card'>"+
          "<img src='images/"+name+".jpg' onerror=\"this.src='images/poster.jpg'\" style='width:100%' >"+
-         "<div class='container'><h4><b>"+movieObject.get("movieNm")+"</b></h4> <p>"+movieObject.get("rank")+"<br>"+ movieObject.get("openDt") +"</p> </div></div></li>");
+         "<div class='container'><h4><b>"+movieObject.get("movieNm")+"</b></h4> <p>"+movieObject.get("rank")+"위<br>"+ movieObject.get("openDt") +" 개봉</p> </div></div></li>");
        
       
      } 

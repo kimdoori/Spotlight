@@ -78,7 +78,8 @@ function calculate(){
 
 	var movieRatesStr = adult.value+" X 10000 + " + teen.value +" X 8000 = ";
 	var movieRates = parseInt(adult.value) * 10000 + parseInt(teen.value)*8000;
-	document.getElementById("numOfReserve").value =movieRatesStr+ movieRates;
+	var value =movieRatesStr+ movieRates;
+	document.getElementById("numOfReserve").innerHTML = value+ "<br>총 금액 : "+movieRates+"원";
 	var cnt = document.getElementById("ticketCnt").value= parseInt(adult.value)+parseInt(teen.value);
 	if(cnt==0)
 		$(":checkbox:not(:checked)").attr("disabled", "disabled");
@@ -109,25 +110,27 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<form oninput="calculate()" method="post" action="reserveProc.jsp?movieName=<%=movieName %>&selectedDate=<%=selectedDate %>&selectedTime=<%=selectedTime %>" >
+<div id="sheet-table">
+<form oninput="calculate()" method="post" action="reserveProc.jsp?movieName=<%=movieName%>&selectedDate=<%=selectedDate%>&selectedTime=<%=selectedTime%>" >
 
-<table id="sheet-table">
+<table width=100%>
 
 <tr>
 <td>
-
+<div style="text-align:center;">
 일반
 <input id="adult" type="number" min="0" max="5" step="1" value="0">
 청소년
 <input id="teen" type="number" min="0" max="5" step="1" value="0">
-
-<output id="numOfReserve"></output><output id="ticketCnt" hidden="true">0</output>
+</div>
 
 
 </td>
+<td>
+</td>
 </tr>
 <tr>
-<td>
+<td width="80%">
 <div style="text-align:center;background:rgba(255,255,255,0);">
 <%
 	
@@ -184,11 +187,26 @@ $(document).ready(function() {
 %>
 </div>
 </td>
+<td width="200px" style="text-align:left;">
+<input id="disabled" type='checkbox' class='none-sheet' disabled></input><label for="disabled"></label>선택불가능 좌석<br>
+<div id="normal"class='none-sheet'></div>일반 좌석<br>
+<input id="checked" type='checkbox' class='none-sheet' checked></input><label for="checked"></label>선택 좌석
+
+</td>
+</tr>
+<tr>
+<td>
+<div style="text-align:center;">
+<output id="numOfReserve"></output><output id="ticketCnt" hidden="true">0</output>
+</div>
+</td>
+<td>
+</td>
 </tr>
 
 </table>
 
-TODO:: CHECK BOX 값 넘기기 => 넘겨서 파일에 저장  => 나의 예매 목록에 띄우기 
+</div>
 <!-- Modal -->
   <div id="myModal" class="modal">
 
@@ -201,6 +219,7 @@ TODO:: CHECK BOX 값 넘기기 => 넘겨서 파일에 저장  => 나의 예매 �
 </div>
 </form>
 <button class="button" id="goReserve">예매하기</button>
+
 
 <script>
 // Get the modal

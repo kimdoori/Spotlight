@@ -6,9 +6,7 @@
 
 <meta charset="UTF-8">
 <title>결제 정보 작성</title>
-<style>
-
-</style>
+<link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 <!-- <form action="reserveProc.jsp" method="post"> -->
@@ -32,7 +30,7 @@
 </tr>
 <tr>
 <td>카드번호</td>
-<td><input type="text" maxlength="4" size="5" required>-<input type="password" maxlength="4" size="5" required>-<input type="text" maxlength="4" size="5" required>-<input type="text" maxlength="4" size="5" required></td>
+<td><input type="text" maxlength="4" size="5" required>-<input type="text" maxlength="4" size="5" required>-<input type="password" maxlength="4" size="5" required>-<input type="password" maxlength="4" size="5" required></td>
 </tr>
 <tr>
 <td>비밀번호</td>
@@ -48,7 +46,7 @@
 </tr>
 <tr>
 <td colspan="2" style="text-align:center">
-<button onclick="location='reviewWrite.jsp'">결제하기</button>
+<input type="submit" value="결제하기" class="button"></input>
 
 </td>
 </tr>

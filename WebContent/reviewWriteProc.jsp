@@ -19,7 +19,7 @@
 	String contents =request.getParameter("content");
 	
 	Date date = new Date();
-	SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh-mm");
 	SimpleDateFormat simpleTime = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
 
 	String w_date = simpleDate.format(date);

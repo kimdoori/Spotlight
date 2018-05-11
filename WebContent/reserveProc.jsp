@@ -17,7 +17,9 @@
 request.setCharacterEncoding("UTF-8");
 String movieName = request.getParameter("movieName");
 String selectedDate = request.getParameter("selectedDate");
+
 String selectedTime = request.getParameter("selectedTime");
+
 String[] sheet = request.getParameterValues("chk");
 
 

@@ -17,6 +17,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String selectedMovie = request.getParameter("selectedMovie");
 	selectedMovie = selectedMovie.replaceAll("[:_!-+=~/?*()<>&]", "").replaceAll(" ","");
+	System.out.println("영화 이름 "+selectedMovie);
 	String selectedDate = request.getParameter("selectedDate");
 	String dailyfile = request.getParameter("dailyfile");
 	

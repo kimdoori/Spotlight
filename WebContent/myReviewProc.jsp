@@ -96,7 +96,7 @@ background: #88ba1c;
 						String tempFileName = tempFile.getName();
 						System.out.println("Path=" + tempPath);
 						System.out.println("FileName=" + tempFileName);
-						if(tempFileName.replaceAll("[0-9-]","").equals(id+".txt")){
+						if(tempFileName.replaceAll("[0-9-]","").replaceAll(" ","").equals(id+".txt")){
 						/*** Do something withd tempPath and temp FileName ^^; ***/
 						reader = new BufferedReader(new FileReader(filepath + tempFileName));
 
@@ -135,7 +135,7 @@ background: #88ba1c;
 내용 : <%=content %><br>
  --%>
  </div>
- <div style="text-align:center;margin:10px;"><button onclick="location='reviewWrite.jsp'">리뷰 남기기</button></div>
+ <div style="text-align:center;margin:10px;"><button class="button" onclick="location='reviewWrite.jsp'">리뷰 남기기</button></div>
  
 </body>
 </html>

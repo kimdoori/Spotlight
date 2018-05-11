@@ -388,18 +388,20 @@ $('#selected-date').on('DOMSubtreeModified',function(){
 	}
 	selectedDate = year+month+day;
 	
-	
+	var movie = movieName.replace(/\s/gi,"").replace(/:/gi,"");
 	//TODO : 날짜 형식바꿔서 넘기기
 	if(movieName != "")
-	  document.getElementById("movie-time").src="choiceTime.jsp?selectedMovie="+movieName+"&selectedDate="+selectedDate+"&dailyfile="+dailyfile;
+	  document.getElementById("movie-time").src="choiceTime.jsp?selectedMovie="+movie+"&selectedDate="+selectedDate+"&dailyfile="+dailyfile;
 	})
 	
 
 	var nextButton = document.getElementById("nextPage");
 	nextButton.onclick=function(){
 		var time = $('#movie-time').contents().find('#timeSpan').html().toString();
+		var movie = movieName.replace(/\s/gi,"").replace(/:/gi,"");
+
 		if((movieName!= ""|| movieName!=null) && (selectedDate!= "" || selectedDate!=null)&& (time!= "" || time!=null))
-			location.href="choiceSheet.jsp?movieName="+movieName+"&selectedDate="+selectedDate+"&selectedTime="+time.replace(" : ","_");
+			location.href="choiceSheet.jsp?movieName="+movie+"&selectedDate="+selectedDate+"&selectedTime="+time.replace(" : ","_");
 		else
 			alert("모든 항목을 선택해주세요.");
 	}

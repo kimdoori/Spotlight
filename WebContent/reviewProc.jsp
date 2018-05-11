@@ -123,7 +123,8 @@ background: #88ba1c;
  </div>
  <%
  if(id!=null)
-	 out.println("<div style='text-align:center;margin:10px;'><button onclick=\"location='reviewWrite.jsp'\">리뷰 남기기</button></div>");
+	 out.println("<div style='text-align:center;margin:10px;'><button class='button' onclick=\"location='reviewWrite.jsp'\">리뷰 남기기</button></div>");
+ 
 
 
  %>

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 글쓰기 - 결과화면</title>
+<title>예매 내역</title>
 <link rel="stylesheet" href="css/ticket.css">
 <link rel="stylesheet" href="css/input.css">
 
@@ -68,6 +68,14 @@ background: #88ba1c;
 </div>
 <div class="review-container">
 		<%
+			String id = (String)session.getAttribute("id");
+		
+				if(id == null || id.equals("")){%>
+				<jsp:forward page="framePage.jsp">
+					<jsp:param name="CONTENTPAGE" value="signin.jsp"/>
+				</jsp:forward>
+				<%
+				}
 			
 		%>
 
@@ -87,6 +95,8 @@ background: #88ba1c;
 						String tempFileName = tempFile.getName();
 						System.out.println("Path=" + tempPath);
 						System.out.println("FileName=" + tempFileName);
+						System.out.println("으으아아"+tempFileName.replaceAll("[0-9]","").replaceAll(".txt",""));
+						if(tempFileName.replaceAll("[0-9]","").replaceAll(".txt","").equals(id)){
 						/*** Do something withd tempPath and temp FileName ^^; ***/
 						reader = new BufferedReader(new FileReader(filepath + tempFileName));
 
@@ -122,6 +132,7 @@ background: #88ba1c;
 					    if(reviewCnt%4==0)
 					    	out.print("<br>");
  */					}
+					}
 
 				}
 

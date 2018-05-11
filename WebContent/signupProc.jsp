@@ -93,7 +93,7 @@
 	<%
 	response.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html; charset=UTF-8");
-
+	request.setCharacterEncoding("UTF-8");
 
 		String contentpage = request.getParameter("CONTENTPAGE");
 
@@ -143,11 +143,25 @@
 			String filePath = application.getRealPath("/WEB-INF/member/"+inputID+".txt");
 
 			FileOutputStream output = new FileOutputStream(filePath,true);
-			OutputStreamWriter writer = new OutputStreamWriter(output,"UTF-8");
-			BufferedWriter fileOut = new BufferedWriter(writer);
+			PrintWriter writer = null;
 	
 			String result;
 			try{
+				/* String filePath = application.getRealPath("/WEB-INF/review/"+filename); */
+				//out.println(filePath);
+				writer = new PrintWriter(filePath);
+				/* String  title = reader.readLine();
+				String  w_time= reader.readLine();
+				String  writer= reader.readLine(); */
+				writer.printf("%s%n",inputPw);
+				writer.printf("%s%n",inputName);
+				writer.printf("%s%n",inputPhone);
+				
+				
+				writer.flush();
+				writer.close();
+
+				/* 
 				//out.println(filePath);
 				fileOut.write(inputPw);
 				fileOut.newLine();
@@ -156,7 +170,7 @@
 				fileOut.write(inputPhone);
 
 				fileOut.flush();
-				fileOut.close();
+				fileOut.close(); */
 				result="ok";
 			}catch(Exception e){
 				out.println("오류발생");

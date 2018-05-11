@@ -135,6 +135,7 @@ background-color:rgb(0,0,30);
 <td>
 <div style="text-align:right;padding-right:100px;">
 <%
+	request.setCharacterEncoding("UTF-8");
 	String userName = (String)session.getAttribute("name");
 	if(userName!=null){
 	out.print("<span id='user'>"+userName+"님 환영합니다.</span>");

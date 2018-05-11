@@ -14,6 +14,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	
+	String title =request.getParameter("title");
+
 	String contents =request.getParameter("content");
 	
 	Date date = new Date();
@@ -36,6 +38,10 @@
 		String filePath = application.getRealPath("/WEB-INF/review/"+filename);
 		//out.println(filePath);
 		writer = new PrintWriter(filePath);
+		/* String  title = reader.readLine();
+		String  w_time= reader.readLine();
+		String  writer= reader.readLine(); */
+		writer.printf("%s %n",title);
 		writer.printf("%s %n",w_time);
 		writer.printf("%s %n",user);
 		writer.println(contents);

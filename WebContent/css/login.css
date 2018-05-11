@@ -10,6 +10,13 @@
   padding: 8% 0 0;
   margin: auto;
 }
+.review-page
+ {
+  width: 500px;
+  padding: 8% 0 0;
+  margin: auto;
+  text-align:center;
+}
 .form {
   position: relative;
   z-index: 1;
@@ -32,6 +39,18 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+}
+.form textarea {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  resize:none;
 }
 .signup-page .form input{
 	font-family: "Roboto", sans-serif;
@@ -77,6 +96,7 @@
    background:rgba(255, 255, 0.9);
 
 }
+
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;

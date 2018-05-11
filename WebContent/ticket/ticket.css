@@ -1,14 +1,13 @@
 .cardWrap {
   width: 27em;
   margin: 3em auto;
-  color: #000;
+  color: #fff;
   font-family: sans-serif;
 }
 
 .card {
-  background: linear-gradient(to bottom, #F0F032 0%,#F0F032 26%, #ecedef 26%, #ecedef 100%);
- /*  background:rgba(255, 255, 72,0.8); */
-
+  background: linear-gradient(to bottom, #e84c3d 0%, #e84c3d 26%, #ecedef 26%, #ecedef 100%);
+  height: 11em;
   float: left;
   position: relative;
   padding: 1em;
@@ -21,13 +20,12 @@
 }
 
 .cardRight {
-  width: 8.5em;
+  width: 6.5em;
   border-left: .18em dashed black;
    /*  border-left: .18em dashed #fff;
    */
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-  margin-bottom:30px;
 }
 .cardRight:before, .cardRight:after {
   content: "";
@@ -104,7 +102,7 @@ h1 span {
 .eye:before {
   width: 1em;
   height: 1em;
-  background: #F0F032;
+  background: #e84c3d;
   z-index: 2;
   left: 8px;
   top: 4px;
@@ -123,8 +121,7 @@ h1 span {
   text-transform: uppercase;
 }
 .number h3 {
-  color: #AB9C12;
-  
+  color: #e84c3d;
   margin: .9em 0 0 0;
   font-size: 2.5em;
 }

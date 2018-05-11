@@ -138,7 +138,6 @@ background-color:rgb(0,0,30);
 	String userName = (String)session.getAttribute("name");
 	if(userName!=null){
 	out.print("<span id='user'>"+userName+"님 환영합니다.</span>");
-	out.print("<a href='modifyInfo.jsp'><button class='login-menu-btn'>Account</button></a>");
 	out.print("<a href='signout.jsp'><button class='login-menu-btn'>Sign out</button></a>");
 	}else{
 		out.print("<a href='signin.jsp'><button class='login-menu-btn'>Sign in</button></a>");
@@ -180,7 +179,7 @@ background-color:rgb(0,0,30);
 <div class="top-menu-container">
   <button class="top-menu-btn">RESERVE</button>
   <div class="top-menu-detail" style="left:0;">
-    <a href="movieTime.jsp">상영시간표</a>
+    <!-- <a href="movieTime.jsp">상영시간표</a> -->
     <a href="choiceMovie.jsp">예매하기</a>
   </div>
 </div>

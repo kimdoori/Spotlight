@@ -19,6 +19,7 @@
 <head>
 <title></title>
 <link rel="stylesheet" href="css/reserve.css">
+
 <style>
 /* Scrollbar styles */
 .movie-container{
@@ -55,6 +56,14 @@ background: #88ba1c;
 </script>
 </head>
 <body>
+<% String id = (String)session.getAttribute("id");
+		if(id == null || id.equals("")){%>
+		<jsp:forward page="framePage.jsp">
+			<jsp:param name="CONTENTPAGE" value="signin.jsp"/>
+		</jsp:forward>
+		<%
+		}
+%>
 <script>
 var movieName="";
 var selectedDate="";
@@ -346,7 +355,7 @@ e.printStackTrace();
 </td>
 </tr>
 </table>
-<button id="nextPage">좌석 선택하기</button>
+<button class="button" id="nextPage">좌석 선택하기</button>
 
 <script>
 

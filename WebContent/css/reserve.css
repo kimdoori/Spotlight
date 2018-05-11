@@ -25,9 +25,26 @@
   transition: all 0.3 ease;
 	
 }
+.button:hover,.form .button:active,.form .button:focus {
+   background:rgba(255, 255, 0.9);
 
+}
+.button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background:rgba(255, 255, 72,0.8);
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: black;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
 .selected{
-	background-color:#22250b;
+	background-color:#353535;
 	color:white;
 }
 .area {
@@ -64,7 +81,71 @@ width:100%;
 .none-sheet{
 	width:20px;
 	height:20px;
-	background-color:rgb(110, 109, 109);
+	background-color:#353535;
+	margin : 1px;
+	display:inline-block;
+	border-radius: 3px;
+	
+}
+ input[type="checkbox"] {
+    display: none;
+} 
+input[type="checkbox"][disabled]+ label{
+ 	width:20px;
+	height:20px;
+	background: white;
+    border-color: #3d9000;
+	margin : 1px;
+	display:inline-block;
+	border-radius: 3px;
+	
+}
+input[type="checkbox"]:checked+ label{
+ 	width:20px;
+	height:20px;
+	background: #353535;
+    border-color: #3d9000;
+	margin : 1px;
+	display:inline-block;
+	border-radius: 3px;
+	color:white;
+	content: '✓';
+}
+
+input[type="checkbox"]+ label{
+ 	width:20px;
+	height:20px;
+	background: #8C8C8C;
+    border-color: #3d9000;
+	margin : 1px;
+	display:inline-block;
+	border-radius: 3px;
+	
+}
+/* input[type="checkbox"]:hover+ label{
+ 	width:20px;
+	height:20px;
+	background: red;
+    border-color: #3d9000;
+	margin : 1px;
+	display:inline-block;
+	border-radius: 3px;
+	
+}  */
+ .none-sheet{
+ 	width:20px;
+	height:20px;
+	background: #8C8C8C;
+    border-color: #3d9000;
+	margin : 1px;
+	display:inline-block;
+	border-radius: 3px;
+	
+}
+.none-sheet[disabled="true"]{
+	width:20px;
+	height:20px;
+	background-color:#353535;
 	margin : 1px;
 	display:inline-block;
 	border-radius: 3px;
@@ -73,7 +154,7 @@ width:100%;
 .sheet{
 	width:20px;
 	height:20px;
-	background-color:rgb(110, 109, 109);;
+	background-color:#353535;
 	margin : 1px;
 	display:inline-block;
 	border-radius: 3px;
@@ -83,7 +164,7 @@ width:100%;
 	background-color:gray;
     color:black;
     
-}
+} 
 
 .sheet-num{
 	width:20px;
@@ -93,7 +174,7 @@ width:100%;
 	display:inline-block;
 	font-size:15px;
 	 text-align: center;
-	
+}
 
 
 .container input {

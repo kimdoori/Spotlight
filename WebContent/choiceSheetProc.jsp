@@ -168,11 +168,11 @@ $(document).ready(function() {
 			}
 
 			if(sheet[count].equals("0")){//예매된 좌석
-				out.println("<input name='alreadychk' type='checkbox' class='none-sheet' disabled></input>");
+				out.println("<input name='alreadychk' type='checkbox' class='none-sheet' disabled></input><label for='"+(char)('A'+i-1)+(j+1)+"'></label>");
 				count++;
 			}
 			else{
-				out.println("<input name='chk' type='checkbox' value="+(char)('A'+i-1)+(j+1)+" class='sheet' disabled></input>");
+				out.println("<input name='chk' type='checkbox' value='"+(char)('A'+i-1)+(j+1)+"' id='"+(char)('A'+i-1)+(j+1)+"' class='sheet' disabled></input> <label for='"+(char)('A'+i-1)+(j+1)+"'></label>");
 				count++;
 			}
 			
@@ -200,7 +200,7 @@ TODO:: CHECK BOX 값 넘기기 => 넘겨서 파일에 저장  => 나의 예매 �
 
 </div>
 </form>
-<button id="goReserve">예매하기</button>
+<button class="button" id="goReserve">예매하기</button>
 
 <script>
 // Get the modal

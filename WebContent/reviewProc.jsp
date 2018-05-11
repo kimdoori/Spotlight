@@ -65,7 +65,7 @@ background: #88ba1c;
 <div class="review-container">
 	<ul>
 		<%
-			
+			String id= (String)session.getAttribute("id");
 		%>
 
 		<%
@@ -121,7 +121,12 @@ background: #88ba1c;
 내용 : <%=content %><br>
  --%>
  </div>
- <div style="text-align:center;margin:10px;"><button onclick="location='reviewWrite.jsp'">리뷰 남기기</button></div>
+ <%
+ if(id!=null)
+	 out.println("<div style='text-align:center;margin:10px;'><button onclick=\"location='reviewWrite.jsp'\">리뷰 남기기</button></div>");
+
+
+ %>
  
 </body>
 </html>

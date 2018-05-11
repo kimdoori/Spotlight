@@ -32,19 +32,19 @@
 </tr>
 <tr>
 <td>카드번호</td>
-<td><input type="text" maxlength="4" size="5">-<input type="password" maxlength="4" size="5">-<input type="text" maxlength="4" size="5">-<input type="text" maxlength="4" size="5"></td>
+<td><input type="text" maxlength="4" size="5" required>-<input type="password" maxlength="4" size="5" required>-<input type="text" maxlength="4" size="5" required>-<input type="text" maxlength="4" size="5" required></td>
 </tr>
 <tr>
 <td>비밀번호</td>
-<td><input type="password" maxlength="2" size="2">**</td>
+<td><input type="password" maxlength="2" size="2" required>**</td>
 </tr>
 <tr>
 <td>유효기간</td>
-<td><input type="text" maxlength="2" size="2">월<input type="text" maxlength="2" size="2">년</td>
+<td><input type="text" maxlength="2" size="2">월<input type="text" maxlength="2" size="2" required>년</td>
 </tr>
 <tr>
 <td>법적생년월일<br>(6자리)</td>
-<td><input type="password" maxlength="6" size="7">-* * * * * * *</td>
+<td><input type="password" maxlength="6" size="7" required>-* * * * * * *</td>
 </tr>
 <tr>
 <td colspan="2" style="text-align:center">

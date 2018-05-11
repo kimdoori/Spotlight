@@ -19,7 +19,6 @@ String movieName = request.getParameter("movieName");
 String selectedDate = request.getParameter("selectedDate");
 String selectedTime = request.getParameter("selectedTime");
 String[] sheet = request.getParameterValues("chk");
-System.out.println("g«÷"+selectedTime);
 
 
 String userId = (String) session.getAttribute("id");
@@ -33,7 +32,7 @@ String result;
 	SimpleDateFormat formatter=new SimpleDateFormat("yyyyMMddhhmmss");
 	String reserveDate=formatter.format(date);
 	
-	String reservefilePath = application.getRealPath("/WEB-INF/reserve/"+userId);
+	String reservefilePath = application.getRealPath("/WEB-INF/reserve/");
 		
 	File reservefile = new File(reservefilePath);
 	 if(!reservefile.exists()){
@@ -42,7 +41,7 @@ String result;
       }
 	
 	
-	writer = new PrintWriter(reservefilePath+"/"+reserveDate+".txt");
+	writer = new PrintWriter(reservefilePath+"/"+reserveDate+userId+".txt");
 	writer.printf("%s %n",movieName);
 	writer.printf("%s %n",selectedDate);
 	writer.printf("%s %n",selectedTime);

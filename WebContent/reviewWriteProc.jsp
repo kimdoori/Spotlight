@@ -52,7 +52,7 @@
 		out.println("오류발생");
 		result="fail";
 	}
-	response.sendRedirect("review.jsp?send="+result);
+	response.sendRedirect("myReview.jsp?send="+result);
 
 %>
 

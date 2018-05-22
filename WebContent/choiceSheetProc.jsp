@@ -142,7 +142,8 @@ $(document).ready(function() {
 		String filePath=application.getRealPath("/WEB-INF/movie/"+selectedDate+"/"+movieName+"/"+selectedTime+".txt");
 		//out.println(filePath);
 		reader = new BufferedReader(new FileReader(filePath));
-		
+		String restSheet = reader.readLine();
+
 		StringBuffer sb = new StringBuffer();
 		while(true){
 			String str = reader.readLine();
@@ -150,7 +151,7 @@ $(document).ready(function() {
 			
 			sb.append(str);
 		}
-		sheet = sb.toString().split(" ");
+		sheet = sb.toString().trim().split(" ");
 		
 	}catch(Exception e){
 		out.println("지정된 파일을 찾을 수 없습니다.");
@@ -170,6 +171,7 @@ $(document).ready(function() {
 				continue;
 			}
 
+			System.out.println("SHEET "+sheet[count]);
 			if(sheet[count].equals("0")){//예매된 좌석
 				out.println("<input name='alreadychk' type='checkbox' class='none-sheet' disabled></input><label for='"+(char)('A'+i-1)+(j+1)+"'></label>");
 				count++;
